@@ -49,11 +49,6 @@ ng server -o
 ```
 
 
-### Sponsoring
-
-Smart Sales Manager is an MIT-licensed open source project. It's an independent project with ongoing development made possible thanks to the support of these awesome backers. [Become a backer or sponsor on OpenCollective](https://opencollective.com/Smart Sales Manager).
-
-
 ### Contributing
 
 If you can, please contribute by reporting issues, discussing ideas, or submitting pull requests with patches and new features. We do our best to respond to all issues and pull requests within a day or two, and make patch releases to npm regularly.
