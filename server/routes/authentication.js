@@ -13,16 +13,16 @@ const con=mysql.createConnection({
 
 function verifyToken(req,res,next){
     if(!req.headers.authorization){
-        return res.status(401).send('Unauthorized Request1');
+        return res.status(401).send('Unauthorized Request.');
     }
     let token=req.headers.authorization.split(' ')[1];
     if(token==="null"){
-        return res.status(401).send("Unauthorized Request2");
+        return res.status(401).send("Unauthorized Request.");
     }
     let payload=jwt.verify(token,'MysupersecreteKey');
    
     if(!payload){
-        return res.status(401).send("Unauthorized Request3");
+        return res.status(401).send("Unauthorized Request.");
     }
     req.userId=payload.subject;
     //console.log(req.userId);
@@ -61,7 +61,7 @@ router.post('/registerUser',(req,res)=>{
             console.log(err);
         } else {
             if(result.length>0){
-                res.status(500).send("Email is alreay signed up");
+                res.status(500).send("This email is alreay used by someone");
             } else {
                 sql="select * from customer where mob_phone="+user.mobile;
                 con.query(sql,(err,result)=>{
@@ -69,7 +69,7 @@ router.post('/registerUser',(req,res)=>{
                         console.log(err);
                     } else {
                         if(result.length>0){
-                            res.status(500).send("Mobile is already signed up");
+                            res.status(500).send("Mobile is already registered");
                         } else {
                             sql="insert into customer(name,email,password,mob_phone) values('"+user.name+"','"+user.email+"','"+user.password+"',"+user.mobile+")"
                             con.query(sql,(err,result)=>{

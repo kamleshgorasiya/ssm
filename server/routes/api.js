@@ -17,16 +17,16 @@ router.get('/', (req,res) => {
 
 function verifyToken(req,res,next){
     if(!req.headers.authorization){
-        return res.status(401).send('Unauthorized Request1');
+        return res.status(401).send('Unauthorized Request.');
     }
     let token=req.headers.authorization.split(' ')[1];
     if(token==="null"){
-        return res.status(401).send("Unauthorized Request2");
+        return res.status(401).send("Unauthorized Request.");
     }
     let payload=jwt.verify(token,'MysupersecreteKey');
    
     if(!payload){
-        return res.status(401).send("Unauthorized Request3");
+        return res.status(401).send("Unauthorized Request.");
     }
     req.userId=payload.subject;
     //console.log(req.userId);
