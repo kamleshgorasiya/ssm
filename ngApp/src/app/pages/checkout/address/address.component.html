@@ -1,0 +1,59 @@
+<div class="main">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+          <div class="stepper text-center">
+              <div>
+                <a class="selectDiv text-dark" (click)="bagClick()">BAG</a>
+              </div>
+              <div>
+               &nbsp;&nbsp; --------  &nbsp;&nbsp;
+              </div>
+              <div class="selectDiv">
+                ADDRESS
+                <br>
+                <hr>
+              </div>
+              <div>
+                  &nbsp;&nbsp; --------  &nbsp;&nbsp;
+              </div>
+              <div class="selectDiv">
+                PAYMENT
+              </div>
+            </div>
+        <p><b>Select Address :-</b></p>
+        <div class="card">
+          <div class="card-header">
+            Address :
+          </div>
+          <div class="card-body">
+            <div>
+              Address : <span class="text-dark">{{address.address_1}}</span>
+            </div>
+            <div>
+              <span class="text-dark">{{address.address_2}}</span>
+            </div>
+            <div>
+              City : <span class="text-dark">{{address.city}}</span>
+            </div>
+            <div>
+              Region : <span class="text-dark">{{address.region}}</span>
+            </div>
+            <div>
+              Postal Code : <span class="text-dark">{{address.postal_code}}</span>
+            </div>
+          </div>
+          <div class="card-footer">
+            <p>
+              <a class="select text-success" (click)="continueAddress()">Countinue</a>
+              <a class="select text-primary" (click)="editAddress()">Edit</a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+      
+  </div>
+</div>

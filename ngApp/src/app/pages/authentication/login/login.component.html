@@ -1,0 +1,89 @@
+<div class="container">
+  <div>
+      <div class="py-5">
+          <div class="row">
+            <div class="col-md-6 mx-auto">
+              <span class="anchor" id="formLogin"></span>
+              <div class="text text-danger text-center h5">
+                {{errorText}}
+              </div>
+              <!-- form card login -->
+              <div class="card rounded-0">
+                  <div class="card-header">
+                      <h3 class="mb-0">Login</h3>
+                  </div>
+                <div class="card-body"> 
+                  <form class="form" #form="ngForm">
+                    <div class="form-control-group">
+                      <label class="label" for="input-email">Email address:</label>
+                      <input 
+                      type="text"
+                      [(ngModel)]="user.email"
+                      #email="ngModel"
+                      class="form-control input-underline input-lg h5"
+                      name="email"
+                      id="input-email"
+                      pattern=".+@.+\..+"
+                      placeholder="Email address"
+                      required
+                      >
+                      <ng-container *ngIf="email.invalid && email.touched">
+                        <p class="text-danger" *ngIf="email.errors?.required">
+                            Email is required!
+                        </p>
+                        <p class="text-danger" *ngIf="email.errors?.pattern">
+                          Email should be the real one!
+                        </p>
+                      </ng-container>   
+
+                      
+                    </div>
+                    <div class="form-control-group">
+                        <label class="label" for="input-password">Password:</label>
+                        <input 
+                               fullWidth
+                               class="form-control input-underline input-lg h5"
+                               [(ngModel)]="user.password"
+                               #password="ngModel"
+                               name="password"
+                               type="password"
+                               id="input-password"
+                               placeholder="Password"
+                               required
+                               minlength="4"
+                               [attr.aria-invalid]="password.invalid && password.touched ? true : null">
+                        <ng-container *ngIf="password.invalid && password.touched ">
+                          <p class="text-danger" *ngIf="password.errors?.required">
+                            Password is required!
+                          </p>
+                          <p class="text-danger" *ngIf="password.errors?.minlength || password.errors?.maxlength">
+                            Password should contains
+                            minimum 4
+                            characters
+                          </p>
+                        </ng-container>
+                      </div>
+                      <div class="form-control-group">
+                        <button type="submit" (click)="loginUser()" class="btn btn-success btn-block h4" [disabled]="submitted || !form.valid"><i class="ion-md-key"></i> &nbsp;Login</button>
+                      </div>
+                  </form>
+                  <a class="link" href="#">
+                    <div>
+                      Forgot password?
+                    </div>
+                  </a>
+                  <div class="form-control-group">
+                      <button type="submit" class="btn btn-primary btn-block h4" routerLink="../register"><i class="ion-md-person-add"></i> &nbsp;Sign up New Account</button>
+                  </div>
+                </div>
+                <!--/card-block-->
+              </div>
+              <!-- /form card login -->
+        
+            </div>
+        
+        
+          </div>
+        </div>
+  </div>
+</div>

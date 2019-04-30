@@ -1,0 +1,118 @@
+<div class="container">
+  <div>
+    <div class="py-5">
+      <div class="row">
+        <div class="col-md-7 mx-auto">
+            <span class="anchor" id="formRegister"></span>
+            <div class="error text-danger h5 text-center">
+                {{errorText}}
+            </div>
+            <div class="card rounded-0">
+              <div class="card-header">
+                <h3 class="mb-0">Register</h3>
+              </div>
+              <div class="card-body">
+                <form class="form" #form="ngForm">
+                  <div class="form-control-group">
+                    <label class="label" for="input-email">User Name:</label>
+                    <input 
+                    type="text"
+                    [(ngModel)]="user.name"
+                    #uname="ngModel"
+                    class="form-control input-underline input-lg h5"
+                    name="uname"
+                    id="input-uname"
+                    placeholder="User Name"
+                    required
+                    >
+                    <ng-container *ngIf="uname.invalid && uname.touched">
+                      <p class="text-danger" *ngIf="uname.errors?.required">
+                          User Name is required!
+                      </p>
+                    </ng-container>   
+                  </div>
+                  <div class="form-control-group">
+                    <label class="label" for="input-email">Email address:</label>
+                    <input 
+                    type="text"
+                    [(ngModel)]="user.email"
+                    #email="ngModel"
+                    class="form-control input-underline input-lg h5"
+                    name="email"
+                    id="input-email"
+                    pattern=".+@.+\..+"
+                    placeholder="Email address"
+                    required
+                    >
+                    <ng-container *ngIf="email.invalid && email.touched">
+                      <p class="text-danger" *ngIf="email.errors?.required">
+                        Email is required!
+                      </p>
+                      <p class="text-danger" *ngIf="email.errors?.pattern">
+                        Email should be the real one!
+                      </p>
+                    </ng-container>   
+                  </div>
+                  <div class="form-control-group">
+                    <label class="label" for="input-password">Password:</label>
+                    <input 
+                      fullWidth
+                      class="form-control input-underline input-lg h5"
+                      [(ngModel)]="user.password"
+                      #password="ngModel"
+                      name="password"
+                      type="password"
+                      id="input-password"
+                      placeholder="Password"
+                      required
+                      minlength="4"
+                      [attr.aria-invalid]="password.invalid && password.touched ? true : null">
+                      <ng-container *ngIf="password.invalid && password.touched ">
+                        <p class="text-danger" *ngIf="password.errors?.required">
+                          Password is required!
+                        </p>
+                        <p class="text-danger" *ngIf="password.errors?.minlength || password.errors?.maxlength">
+                          Password should contains
+                          minimum 4
+                          characters
+                        </p>
+                      </ng-container>
+                  </div>
+                  <div class="form-control-group">
+                    <label class="label" for="input-mobile">Mobile:</label>
+                    <input 
+                      fullWidth
+                      class="form-control input-underline input-lg h5"
+                      [(ngModel)]="user.mobile"
+                      #mobile="ngModel"
+                      name="mobile"
+                      type="text"
+                      pattern="\d{10}"
+                      id="input-mobile"
+                      placeholder="Mobile"
+                      required
+                      minlength="4"
+                      [attr.aria-invalid]="mobile.invalid && mobile.touched ? true : null">
+                      <ng-container *ngIf="mobile.invalid && mobile.touched ">
+                        <p class="text-danger" *ngIf="mobile.errors?.required">
+                          Mobile is required!
+                        </p>
+                        <p class="text-danger" *ngIf="mobile.errors?.pattern">
+                          Mobile should be of 10 digit
+                        </p>
+                      </ng-container>
+                  </div>
+                  <div class="form-control-group">
+                    <button type="submit" (click)="registerUser()" class="btn btn-primary btn-block h4" [disabled]="submitted || !form.valid"><i class="ion-md-person-add"></i> &nbsp;Register</button>
+                  </div>
+                </form>
+                <div class="text-center">
+                  Already have an account? <a routerLink="../login" class="link">Login</a>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

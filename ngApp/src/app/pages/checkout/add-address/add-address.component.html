@@ -1,0 +1,71 @@
+<div class="main">
+  <div class="container">
+    <form #form="ngForm" name="addressForm">
+        <div class="input-row">
+            <input class="input-base-input" name="address1" #address1="ngModel" [(ngModel)]="address.address1" id="address1" type="text" required>
+            <label for="address1" class="input-label">Address1  <span class="text-danger">*</span></label>
+            <div *ngIf="address1.invalid && address1.touched">
+              <p class="text-danger" *ngIf="address1.errors?.required">
+                  Address is required!
+              </p>
+            </div>
+          </div>
+          <div class="input-row">
+            <input class="input-address2" name="address2" #address2="ngModel" [(ngModel)]="address.address2" id="address2" type="text">
+            <label for="address2" class="input-label">Address2</label>
+          </div>
+          <div class="input-row">
+            <input class="input-base-input" name="city" #city="ngModel" [(ngModel)]="address.city" id="City" type="text" required>
+            <label for="City" class="input-label">City  <span class="text-danger">*</span></label>
+            <div *ngIf="city.invalid && city.touched">
+              <p class="text-danger" *ngIf="city.errors?.required">
+                City is required!
+              </p>
+            </div>
+          </div>
+          <div class="input-row">
+            <input class="input-base-input" name="region" #regionText="ngModel" [(ngModel)]="address.region" id="region" type="text" required>
+            <label for="region" class="input-label">Region  <span class="text-danger">*</span></label>
+            <div *ngIf="regionText.invalid && regionText.touched">
+              <p class="text-danger" *ngIf="regionText.errors?.required">
+                Region is required!
+              </p>
+            </div>
+          </div>
+          <div class="input-row">
+            <input class="input-base-input" name="postalCode" #postalCode="ngModel" [(ngModel)]="address.postalCode" id="postal" type="text" required>
+            <label for="postal" class="input-label">Postal Code  <span class="text-danger">*</span></label>
+            <div *ngIf="postalCode.invalid && postalCode.touched">
+              <p class="text-danger" *ngIf="postalCode.errors?.required">
+                Postal is required!
+              </p>
+            </div>
+          </div>
+          <div class="country-container">
+            <div class="country-content">
+              <label>Country  <span class="text-danger">*</span></label><br>
+              <select [(ngModel)]="country" name="country">
+                <option *ngFor="let region of shippingRegions" [ngValue]="region.shipping_region">{{region.shipping_region}}</option>
+              </select>
+            </div>
+            <div class="country-content">
+              <label>Shipping Region  <span class="text-danger">*</span></label><br>
+              <select [(ngModel)]="region_id" name="region_id" (change)="regionChange()">
+                <option *ngFor="let region of shippingRegions" [ngValue]="region.shipping_region_id">{{region.shipping_region}}</option>
+              </select>
+            </div>
+            <div class="country-content">
+              <label>Shipping Options  <span class="text-danger">*</span></label><br>
+              <select [(ngModel)]="shippingOption" name="shippingOptions" placeholder="Please Select">
+                <option *ngFor="let option of displayOptions" [ngValue]="option.shipping_id">{{option.shipping_type}}</option>
+              </select>
+            </div>
+            <p class="text-danger">{{selectError}}</p>
+          </div>
+          <div class="save">
+            <button class="btn btn-primary" name="save" [disabled]="submitted || !form.valid" (click)="saveAddress()">Save Address</button>
+          </div>
+    </form>
+    
+  </div>
+</div>

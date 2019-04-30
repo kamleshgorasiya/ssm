@@ -1,0 +1,130 @@
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    width:250px;
+    left: -80.5px;
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 3;
+    cursor: pointer;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 10px 10px;
+    text-decoration: none;
+    display: block;
+  }
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+.badge{
+  
+  border-radius: 50px;
+  position: absolute;
+}
+.nav-link{
+  cursor: pointer;
+}
+.link{
+  font-size: 16px;
+  font-weight: 500;
+}
+.department{
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    color: #282C3F;
+    
+    border-bottom: none;
+    font-weight: 500;
+    text-transform: uppercase;
+    
+}
+
+.departmentDetail:hover{
+  border-bottom: 3px solid #FF527B;
+  
+}
+.sub-category{
+  width:500px;
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 3;
+  cursor: pointer;
+  left: -80.5px;
+  -webkit-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+  overflow: auto;
+  width: 800px;
+  left: 0px;
+  right: 0px;
+  position: absolute;
+  margin: 0 auto;
+  padding: 10px 10px 10px 15px;
+  margin-left:14px;
+}
+.sub-category li:hover{
+  background: #ddd;
+  color: black;
+  font-weight: 500;
+}
+.category-container{
+  display: -webkit-flex;
+}
+.data{
+  padding:5px;
+  font-size: 14px;
+  text-transform: capitalize;
+  display: block;
+}
+.department:hover .sub-category{
+  display: block;
+}
+.departmentDetail{
+  width:100px;
+  height: 40px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+
+
+.desktop-navBlock {
+  display: block;
+  position: relative;
+  float: left;
+  width: 216px;
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  text-align: left
+}
+.line{
+  border-width:3px;
+  border-color: #FF527B;
+  visibility: hidden;
+}
+@media(max-width:414px){
+  .dropdown{
+    text-align: center; 
+  }
+  .dropdown-content{
+    margin-left:100px;
+  }
+}

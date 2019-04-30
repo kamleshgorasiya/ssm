@@ -1,0 +1,28 @@
+<div class="main">
+  <div class="container">
+    <!-- <div class="row"> -->
+      <!-- <div class="col-md-2"></div>
+      <div class="col-md-8" > -->
+        <div class="order">
+            <div class="card" *ngFor="let order of orders">
+                <div class="card-header">
+                  OrderID : {{order.order_id}}
+                </div>
+                <div class="card-body">
+                  <div>
+                    Placed On : {{order.created_on}}
+                  </div>
+                  <div>
+                    Shipped On : {{order.shipped_on}}
+                  </div>
+                </div>
+                <div class="card-footer">
+                  Amount : {{order.total_amount}}
+                </div>
+              </div>
+        </div>
+      <!-- </div>
+      <div class="col-md-2"></div> -->
+    <!-- </div> -->
+  </div>
+</div>

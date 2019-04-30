@@ -1,0 +1,48 @@
+.main{
+    margin-top: 200px;
+}
+.price-card{
+    width:400px;
+    left:-30px;
+}
+.right{
+    float: right;
+}
+.order{
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px;
+    background: #ff3f6c;
+    cursor: pointer;
+    text-align: center;
+    border: none;
+    border-radius: 2px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    width:360px;
+    margin-bottom: 10px;
+}
+@media(max-width:414px){
+    .price-card{
+        width: 300px;
+        margin-left:80px;
+    }
+    .order{
+        width:250px;
+    }
+    .main{
+        margin-top:350px;
+    }
+}
+.stepper{
+    display: -webkit-flex;
+    margin-bottom: 30px;  
+    top:-50px;
+}
+.stepper hr{
+    border:2px solid #20bd99;
+}
+.selectStepper{
+    cursor: pointer;
+}

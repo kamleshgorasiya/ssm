@@ -1,0 +1,124 @@
+<div class="main">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-6">
+          <div class="stepper text-center">
+              <div class="selectStepper">
+                BAG
+                <br>
+                <hr>
+              </div>
+              <div class="space">
+               &nbsp;&nbsp; ----------  &nbsp;&nbsp;
+              </div>
+              <div class="selectStepper">
+                ADDRESS
+              </div>
+              <div class="space">
+                  &nbsp;&nbsp; ----------  &nbsp;&nbsp;
+              </div>
+              <div>
+                PAYMENT
+                
+              </div>
+            </div>
+          <div class="heading">
+              <p class="secondary">
+                  <span>My Shopping Bag ({{count}} Items)</span>
+                  <span class="right">Total: &#36;{{price.net}}</span>
+              </p>
+          </div>
+        <div class="card mb-4" *ngFor="let cart of allProduct;let index=index">
+          
+          <div class="card-content">
+              
+            <div>
+              <img  class="card-img" src="../../../assets/Images/product_images/{{cart.image}}">
+            </div>
+            <div>
+              <div class="card-body">
+                <div class="header">
+                    <div>
+                      <div class="info">
+                          <span class="h5"><b>{{cart.name}}</b></span>
+                      </div>
+                       
+                        <div>
+                            Size : &nbsp;{{cart.size}}
+                        </div>
+                        <div>
+                            Color : &nbsp;{{cart.color}}
+                            <button class="btn colorButton" [style.background-color]="cart.color" [class.selectedColor]="selectedColor==color" (click)="changeColor(color)"></button>
+                            &nbsp;&nbsp; 
+                        </div>
+                        <div>
+                            <div class="min">
+                                <span>
+                                  <button class="btn minButton" (click)="decrementQuantity(index)" [disabled]="cart.quantity==1"><i class="ion-md-remove"></i></button>
+                                  &nbsp;&nbsp;
+                                  <button class="quantity" disabled>{{cart.quantity}}</button> 
+                                  &nbsp;&nbsp;
+                                  <button class="btn minButton" (click)="incrementQuantity(index)"><i class="ion-md-add"></i></button>
+                                </span>  
+                              </div>
+                        </div>
+                    </div>
+                      <div class="price">
+                        <p class="h5"><b>&#36;{{cart.price}}</b>&nbsp;&nbsp;<del class="text-secondary h6">&#36;{{cart.discounted_price}}</del></p>
+                      </div>
+                </div>
+                
+                
+                
+                <hr class="line">
+                  <a class="remove-link text-danger" (click)="removeCart(cart.item_id)">REMOVE</a>
+                  <a class="wishlist-link text-primary" (click)="moveToWishList(cart.item_id)">MOVE TO WISHLIST</a>
+              </div>        
+            </div>    
+          </div>
+          
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div>
+          <div class="card price-card">
+            <div class="card-header">
+              <p class="h6">PRICE DETAIL</p>
+            </div>
+            <div class="card-body">
+              <div>
+                <p>
+                  <span>Total MRP</span>
+                  <span class="right">&#36;{{price.total}}</span>
+                </p>
+              </div>
+              <div>
+                <p>
+                  <span>Bag Discount</span>
+                  <span class="right">-&#36;{{price.discount}}</span>
+                </p>
+              </div>
+              <div>
+                <hr>
+              </div>
+              <div>
+                <p>
+                  <b>
+                    <span>TOTAL</span>
+                    <span class="right">&#36;{{price.net}}</span>
+                  </b>
+                </p>
+              </div>
+              <div>
+                <button class="order" (click)="placeOrder()">Place Order</button>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+  </div>
+</div>

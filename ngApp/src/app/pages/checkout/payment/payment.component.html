@@ -1,0 +1,79 @@
+<div class="main">
+  <div class="container">
+      
+    <div class="row mx-auto">
+      <div class="col-md-4"></div>
+      <div class="col-md-4 ">
+          <div class="stepper text-center">
+              <div class="selectStepper" (click)="clickBag()">
+                BAG
+              </div>
+              <div>
+               &nbsp;&nbsp; ----------  &nbsp;&nbsp;
+              </div>
+              <div class="selectStepper" (click)="clickAddress()">
+                ADDRESS
+              </div>
+              <div>
+                  &nbsp;&nbsp; ----------  &nbsp;&nbsp;
+              </div>
+              <div>
+                PAYMENT
+                <br>
+                <hr>
+              </div>
+            </div>
+          <div>
+              <div>
+                  <div class="card price-card">
+                    <div class="card-header">
+                      <p class="h6">PRICE DETAIL</p>
+                    </div>
+                    <div class="card-body">
+                      <div>
+                        <p>
+                          <span>Total MRP</span>
+                          <span class="right">&#36;{{price.total}}</span>
+                        </p>
+                      </div>
+                      <div>
+                        <p>
+                          <span>Bag Discount</span>
+                          <span class="right">-&#36;{{price.discount}}</span>
+                        </p>
+                      </div>
+                      <div>
+                          <p>
+                            <span>Shipping</span>
+                            <span class="right">
+                              <select [(ngModel)]="selectedOption" name="selectedOption" #shipping="ngModel" (change)="shippingChange()">
+                                <option *ngFor="let options of shippingOpitons" [ngValue]="options.shipping_id">{{options.shipping_type}}</option>
+                              </select>
+                            </span>
+                          </p>
+                        </div>
+                      <div>
+                        <hr>
+                      </div>
+                      <div>
+                        <p>
+                          <b>
+                            <span>TOTAL</span>
+                            <span class="right">&#36;{{price.net}}</span>
+                          </b>
+                        </p>
+                      </div>
+                      <div class="order-container">
+                        <button class="order" (click)="openCheckout()">CREDIT/DEBIT CARD</button>
+                      </div>
+                     
+                    </div>
+                    
+                  </div>
+                </div>
+          </div>
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+  </div>
+</div>

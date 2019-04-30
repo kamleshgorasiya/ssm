@@ -1,0 +1,118 @@
+.main{
+    margin-top:150px;
+}
+.card-img{
+    height:217px;
+    width:150px;
+}
+.card-content{
+    display: -webkit-flex;
+}
+.header{
+    display: -webkit-flex;
+}
+.color-button{
+    border-radius: 50px;
+}
+.minButton{
+    background-color: #FFFFFF;
+    border-radius: 50px;
+    padding: 0;
+    min-width: 30px;
+    height: 30px;
+    text-align: center;
+    cursor: pointer;
+    border:1px solid #BFC0C6;
+    color: #282C3F;
+    
+}
+.min{
+    margin-top:10px;
+}
+.quantity{
+    background-color: white;
+}
+.line{
+    width:635px;
+}
+.remove-link{
+    cursor: pointer;
+    font-weight: 500;
+}
+.wishlist-link{
+    padding-left:50px;
+    cursor: pointer;
+    font-weight: 500;
+}
+.text-right{
+    text-align: right;
+
+}
+.info{
+    width:450px;
+}
+.price{
+    widows: 100px;
+    text-align: right;
+}
+.card{
+    width: 820px;
+}
+.heading{
+    width:820px;
+}
+.secondary{
+    color: #535766;
+    font-size: 18px;
+    font-weight: 600;
+}
+.vertical-line{
+    width:1px;
+    background-color: rgb(214, 215, 219);
+    position:absolute;  
+    top:0;
+    bottom:0;
+    left: -70px;
+}
+.price-card{
+    margin-top:60px;
+    width:400px;
+    left:-100px;
+}
+.right{
+    float: right;
+}
+@media(max-width:414px){
+    .price-card{
+        left:0px;
+    }
+    .stepper{
+        display: none;
+    }
+    .space{
+        display: none;
+    }
+}
+
+.order{
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px;
+    background: #ff3f6c;
+    cursor: pointer;
+    text-align: center;
+    border: none;
+    border-radius: 2px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    width:360px;
+}
+.stepper{
+    display: -webkit-flex;
+    margin-bottom: 30px;  
+    margin-left:300px;
+}
+.stepper hr{
+    border:2px solid #20bd99;
+}

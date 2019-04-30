@@ -1,0 +1,113 @@
+<nav class="navbar fixed-top navbar-expand-sm text-dark bg-light">
+    <div class="col-md-2">
+        <a class="navbar-brand" href="#">
+            <img src="../../../assets/Images/images/tshirtshop.png" class="img-fluid mx-auto d-block">
+        </a>
+        <button data-toggle="collapse" data-target="#menu" class="navbar-toggler">
+          <span class="ion-md-menu text-dark"></span>
+        </button>
+    </div>
+    <div class="col-md-5">
+      <div>
+          <ul class="nav">
+              <li class="department" *ngFor="let department of department">
+                <div class="departmentDetail" (mouseenter)="changeDepartment(department.department_id)">
+                    {{department.name}}
+                </div>
+                <div class="sub-category">
+                  <div class="category-container">
+                      <div>
+                          <ul class="desktop-navBlock">
+                            <li class="data" *ngFor="let cat1 of cat1" (click)="setCategory(cat1.name)">
+                              {{cat1.name}}
+                            </li>
+                          </ul>
+                        </div>
+                        <div>
+                          <ul class="desktop-navBlock">
+                            <li class="data" *ngFor="let cat2 of cat2" (click)="setCategory(cat2.name)">
+                              {{cat2.name}}
+                            </li>
+                          </ul>
+                        </div>
+                        <div>
+                          <ul class="desktop-navBlock">
+                            <li class="data" *ngFor="let cat3 of cat3" (click)="setCategory(cat3.name)" >
+                              {{cat3.name}} 
+                            </li>
+                          </ul>
+                        </div>
+                  </div>
+              </div>
+              </li>
+            </ul>
+            
+            </div>
+      
+      
+    </div>
+    <div class="col-md-3">
+      <div>
+          <div >
+            <form (submit)="onSubmit()">
+                <div class="form-row">
+                    <div class="col-8">
+                        <input class="form-control form-control-borderless" name="search" type="search" placeholder="Search here.. "  [(ngModel)]="search">
+                    </div>
+
+                    <div class="col">
+                        <button class="btn btn-primary" type="submit">Search</button>
+                    </div>
+                </div>
+            </form>
+          </div>
+      </div>
+    </div>
+  
+    <div class="collapse navbar-collapse col-md-2 text-dark" id="menu">
+        <span class="mr-auto"></span>
+      <div class="navbar-nav text-center text-dark dropdown">
+        <a class="nav-link text-dark" >
+          <span class="text-center text-dark h5">
+            <i class="ion-md-person"></i><br>
+          </span>
+          <span class="link">{{user}}</span></a>
+        <div class="dropdown-content text-left h6">
+          <a (click)="loginClick()">
+            <div>{{loginData}}</div>
+          </a>
+          <a routerLink="/register" *ngIf="loginData=='Login'">
+            <div>Sign Up</div>
+          </a>
+          <a routerLink="/orders">
+            <div>Orders</div>
+          </a>
+          <a routerLink="/wishlist">
+            <div>Wishlist</div>
+          </a>
+          <a>
+            <div>Gift Cards</div>
+          </a>
+          <a>
+            <div>Contact Us</div>
+          </a>
+        </div>
+      </div>
+      <div class="navbar-nav text-center text-dark">
+          <a class="nav-link text-dark" routerLink="/wishlist">
+            <span class="text-center text-dark h5">
+            <i class="ion-md-bookmark"></i></span>
+            <span class="badge badge-danger">{{wishlistItemsCount}}</span>  
+            <br>
+            <span class="link">Wishlist</span></a>
+      </div>
+      <div class="navbar-nav text-center text-dark">
+          <a class="nav-link text-dark" routerLink="/cart">
+            <span class="text-center text-dark h5"> 
+              <i class="ion-md-cart"></i></span>
+              <span class="badge badge-danger">{{cartItemsCount}}</span>
+              <br>
+              <span class="link">Bag</span></a>
+      </div>
+    </div>
+  </nav>

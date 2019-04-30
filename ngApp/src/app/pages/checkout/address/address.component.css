@@ -1,0 +1,24 @@
+.main{
+    margin-top: 150px;
+}
+.select{
+    cursor: pointer;
+}
+.text-success{
+    float: right;
+}
+@media(max-width:414px){
+    .main{
+        margin-top: 320px;
+    }
+}
+.stepper{
+    display: -webkit-flex;
+    margin-bottom: 30px;
+}
+hr{
+    border:2px solid #20bd99;
+}
+.selectDiv{
+    cursor: pointer;
+}

@@ -1,0 +1,14 @@
+.main{
+    margin-top:150px;
+}
+
+.card{
+    margin-right:20px;
+    width:500px;
+    margin-bottom: 20px;
+}
+@media(max-width:414px){
+    .main{
+        margin-top:250px;
+    }
+}

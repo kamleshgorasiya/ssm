@@ -1,0 +1,87 @@
+<div class="main">
+  <div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-4 images mx-auto">
+          <div class="img text-center">
+            
+                <img class="image-secondary" (click)="changeImage(product.image)" src="../../../assets/Images/product_images/{{product.image}}">
+           
+                <img class="image-secondary" (click)="changeImage(product.image_2)" src="../../../assets/Images/product_images/{{product.image_2}}">
+            
+                <img class="image-secondary" (click)="changeImage(product.image)" src="../../../assets/Images/product_images/{{product.image}}">
+            
+                <img class="image-secondary" (click)="changeImage(product.image_2)" src="../../../assets/Images/product_images/{{product.image_2}}">
+            
+                <img class="image-secondary" (click)="changeImage(product.image)" src="../../../assets/Images/product_images/{{product.image}}">
+            
+                <img class="image-secondary" (click)="changeImage(product.image_2)" src="../../../assets/Images/product_images/{{product.image_2}}">
+            
+                <img class="image-secondary" (click)="changeImage(product.image)" src="../../../assets/Images/product_images/{{product.image}}">
+            
+                <img class="image-secondary" (click)="changeImage(product.image_2)" src="../../../assets/Images/product_images/{{product.image_2}}">
+            
+                <img class="image-secondary" (click)="changeImage(product.image)" src="../../../assets/Images/product_images/{{product.image}}">
+          
+                <img class="image-secondary" (click)="changeImage(product.image_2)" src="../../../assets/Images/product_images/{{product.image_2}}">
+            
+          </div>
+          <div class="main-image text-center">
+            <img class="image" src="../../../assets/Images/product_images/{{image}}">
+          </div>
+        </div>
+        <div class="description col-md-6 mx-auto">
+          <div>
+            <p class="h4"><b>{{product.name}}</b></p>
+          </div>
+          <div>
+            <p class="text-secondary">
+                {{product.description}}
+            </p>
+            <hr>
+          </div>
+          <div>
+            <p class="h4"><b>&#36;{{product.price}}</b><span class="h5 text-secondary">&nbsp;&nbsp;<del>&#36;{{product.discounted_price}}</del></span></p>
+          </div>
+          <br>  
+          <div>
+            <p class="text-danger">{{sizeError}}</p>
+            <p class="h5"><b>
+                SELECT SIZE 
+            </b>
+            </p>
+          </div>
+          <div>
+            <div class="size">
+              <span  *ngFor="let size of sizes">
+                <button class="btn sizeButton" [class.activeButton]="selectedSize==size" (click)="changeSize(size)">{{size}}</button>
+                &nbsp;&nbsp;
+              </span>  
+            </div>
+          </div>
+          <div>
+            <p class="text-danger">{{colorError}}</p>
+            <p class="h5"><b>
+              SELECT COLOR 
+              </b>
+            </p>
+          </div>
+          <div>
+            <div class="color">
+              <span *ngFor="let color of colors">
+                  <button class="btn colorButton" [style.background-color]="color" [class.selectedColor]="selectedColor==color" (click)="changeColor(color)"></button>
+                  &nbsp;&nbsp;
+              </span>
+            </div>
+          </div>
+          <div>
+            <button class="cart" (click)="addToBag()"><i class="ion-md-basket"></i> &nbsp;ADD TO BAG</button>
+            <button class="wishlist btn btn-outline-dark" (click)="addToWishlist()" [disabled]="wishlist=='WISHLISTED'"><i class="ion-md-bookmark"></i> &nbsp;{{wishlist}}</button>
+          </div>    
+        </div>
+        <div class="col-md-1"></div>
+      </div>
+    </div>
+  </div>
+</div>

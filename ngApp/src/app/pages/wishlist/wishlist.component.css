@@ -1,0 +1,74 @@
+.card{
+    border: 1px solid #ebebeb;
+    float:none;
+    width:280px;
+}
+.mainDiv{
+    margin-bottom:30px;
+    margin-right:18px;
+}
+.wishlist-header{
+    font-size: 20px;
+}
+.main{
+    padding-left: 235px;
+    padding-top:120px;
+    float:left;
+}
+.img{
+    cursor: pointer;
+}
+.continued{
+    white-space: nowrap;
+    width:190px;
+    overflow:hidden;
+    text-overflow: ellipsis;
+}
+.title{
+    font-size: 16px;
+    font-weight: 500;
+}
+.price{
+    margin-top:5px;
+    margin-bottom:5px;
+}
+.nav-link{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #3466E8;
+    font-weight: 500;
+    cursor: pointer;
+}
+.card:hover{
+    -webkit-box-shadow: -1px 2px 20px -15px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 2px 40px -15px rgba(0,0,0,0.75);
+    box-shadow: -1px 1px 20px -15px rgba(0,0,0,0.75);
+}
+.itemcard-remove{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    height: 24px;
+    width: 24px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border: solid 1.2px #94969F;
+    cursor: pointer;
+    text-align: center;
+}
+.remove{
+    width: 14px;
+    height: 14px;
+    background-position: -1083px 0;
+}
+.dummyCard{
+    visibility: hidden;
+}
+
+@media(max-width:360px){
+    .main{
+        padding-left: 0px;
+        padding-top:200px;
+    }
+}
