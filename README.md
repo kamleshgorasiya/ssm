@@ -17,8 +17,6 @@ Client-side dashboard use JSON Web Token (JWT) to access REST API.
 
 ## Installation
 
-<<<<<<< HEAD
-
 
 ### Requirements
 * Node.js v10.15.3
@@ -42,7 +40,7 @@ Create data base having name "ssm" on mysql console and import database sql file
 ### Requirements
 * Node.js >= 10.15.3
 * Mysql >= MariaDb.10.1.31
->>>>>>> 7124d0d1b1649861ea267ee1421754e7da607ae4
+
 
 And change the database connection config parameter as per your database setting by going server/routes/authentication.js file
 
