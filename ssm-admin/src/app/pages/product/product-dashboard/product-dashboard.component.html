@@ -1,0 +1,97 @@
+<div class="main-container">
+  <div class="card">
+    <div class="card-header">
+      <span class="h5">
+        Product List
+      </span>
+      <span class="right">
+          <div>
+              <button class="btn btn-primary" (click)="getAllProducts()">All Product</button>
+            </div>
+          <div class="searchbar">
+              
+              <div class="filterAttribute">
+                <button class="btn btn-info outline dropdown-toggle" id="departmenutbtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {{filterDepartment.name}}
+                </button>
+          
+                <div class="dropdown-menu" aria-labelledby="departmenutbtn">
+                  <a class="dropdown-item" *ngFor="let department of departments" (click)="filterDepartments(department)">{{department.name}}</a>
+                </div>
+              </div>
+            <div class="search-container">
+                <input type="search" class="form-control search_input" [(ngModel)]="search" (keyup.enter)="searchProduct()" placeholder="Search here...">
+            </div>
+            <div class="search_icon text-center" (click)="searchProduct()">
+              <span class="icon"><i class="ion-md-search"></i></span>
+            </div>
+          </div>
+          <span class="addNew" (click)="addProduct()"><i class="ion-md-add"></i> Add Product</span>
+      </span>
+    </div>
+    <div class="card-body">
+      <table class="table table-striped" *ngIf="totalProducts.totalProduct>0">
+        <thead>
+          <tr>
+            <th scope="col" (click)="sortData('id')">No.
+              <i class="ion-md-arrow-dropup" *ngIf="sorting===1 && sortKey===1"></i>
+              <i class="ion-md-arrow-dropdown" *ngIf="sorting===11 && sortKey===1"></i>
+            </th>
+            <th scope="col" (click)="sortData('name')">Name.
+              <i class="ion-md-arrow-dropup" *ngIf="sorting===1 && sortKey===2"></i>
+              <i class="ion-md-arrow-dropdown" *ngIf="sorting===11 && sortKey===2"></i>
+            </th>
+            <th scope="col">Description
+              
+            </th>
+            <th scope="col">Category</th>
+            <th scope="col" (click)="sortData('price')">Price
+              <i class="ion-md-arrow-dropup" *ngIf="sorting===1 && sortKey===3"></i>
+              <i class="ion-md-arrow-dropdown" *ngIf="sorting===11 && sortKey===3"></i>
+            </th>
+            <th scope="col" (click)="sortData('quantity')">Quantity
+              <i class="ion-md-arrow-dropup" *ngIf="sorting===1 && sortKey===4"></i>
+              <i class="ion-md-arrow-dropdown" *ngIf="sorting===11 && sortKey===4"></i>
+            </th>
+            <th scope="col">Thumbnail</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of allProducts;let index=index">
+            <td>{{product.product_id}}</td>
+            <td>{{product.name}}</td>
+            <td class="description">{{product.description}}</td>
+            <td>{{product.category_name}}</td>
+            <td>{{product.price}}</td>
+            <td>{{product.quantity}}</td>
+            <td>
+              <img src="../../../../assets/Images/thumbnail/{{product.thumbnail}}" width="70" height="70" alt="product-image">
+            </td>
+            <td>
+              <div class="actionbtn">
+                <button class="edit" (click)="editProduct(product)"><i class="ion-md-create"></i></button>
+                <button class="delete" (click)="deleteCategory(attribute)"><i class="ion-md-trash"></i></button>
+              </div>
+              
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="text-center h4 text-warning" *ngIf="totalProducts.totalProduct==0">
+          There is no product which you are finding.
+      </div>
+    </div>
+    <div class="card-footer"  *ngIf="totalProducts.totalProduct>0">
+      <nav aria-label="Page">
+        <ul class="pagination justify-content-center">
+          <li class="page-item" *ngIf="currentPage!=1" (click)="changePage(1)"><a class="page-link">First</a></li>
+          <li class="page-item" *ngIf="currentPage!=1" (click)="changePage(currentPage-1)"><a class="page-link"><i class="ion-md-skip-backward"></i></a></li>
+          <li class="page-item" [class.active]="pageno==currentPage" (click)="changePage(pageno)" *ngFor="let pageno of displayPages"><a class="page-link">{{pageno}}</a></li>
+          <li class="page-item" *ngIf="currentPage!=lastPage" (click)="changePage(currentPage+1)"><a class="page-link"><i class="ion-md-skip-forward"></i></a></li>
+          <li class="page-item" *ngIf="currentPage!=lastPage" (click)="changePage(lastPage)"><a class="page-link">Last</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>

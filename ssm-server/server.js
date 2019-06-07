@@ -1,20 +1,20 @@
 const express=require('express');
 const bodyParser=require('body-parser')
+const path=require('path')
 const cors=require('cors');
 const port=3000;
-const api=require('./routes/api')
-const auth=require('./routes/authentication');
-const product=require('./routes/product');
-const cart=require('./routes/cart');
-const payment=require('./routes/payment');
+const client=require('./routes/client');
+const admin=require('./routes/admin');
+
+
 const app=express()
+
 app.use(cors())
 app.use(bodyParser.json())
-app.use('/api',api)
-app.use('/authentication',auth)
-app.use('/cart',cart);
-app.use('/product',product);
-app.use('/payment',payment);
+
+app.use('/admin',admin);
+app.use('/client',client);
+
 app.get('/',function(req,res){
     res.send("Hello from Server");
 });
@@ -22,3 +22,5 @@ app.get('/',function(req,res){
 app.listen(port,function(){
     console.log("Server running on "+port);
 })
+
+module.exports=app;

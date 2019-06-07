@@ -1,0 +1,37 @@
+<div class="main-container">
+  <div class="card">
+    <div class="card-header h5">
+      Manage Orders :-
+    </div>
+    <div class="card-body">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" data-toggle="tab" href="#pending">Pending Order</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#confirmed">Confirmed Order</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#dispatched">Dispatched Order</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#delivered">Delivered Order</a>
+        </li>
+      </ul>
+    </div>
+    <div class="tab-content">
+      <div class="tab-pane active" id="pending">
+        <app-pending-order></app-pending-order>
+      </div>
+      <div class="tab-pane fade" id="confirmed">
+        <app-confirmed-order></app-confirmed-order>
+      </div>
+      <div class="tab-pane fade" id="dispatched">
+        <app-dispatched-order></app-dispatched-order>
+      </div>
+      <div class="tab-pane fade" id="delivered">
+        <app-delivered-order></app-delivered-order>
+      </div>
+    </div>
+  </div>
+</div>

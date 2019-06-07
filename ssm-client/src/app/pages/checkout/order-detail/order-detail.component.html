@@ -1,28 +1,75 @@
 <div class="main">
-  <div class="container">
-    <!-- <div class="row"> -->
-      <!-- <div class="col-md-2"></div>
-      <div class="col-md-8" > -->
-        <div class="order">
-            <div class="card" *ngFor="let order of orders">
-                <div class="card-header">
-                  OrderID : {{order.order_id}}
-                </div>
-                <div class="card-body">
-                  <div>
-                    Placed On : {{order.created_on}}
-                  </div>
-                  <div>
-                    Shipped On : {{order.shipped_on}}
-                  </div>
-                </div>
-                <div class="card-footer">
-                  Amount : {{order.total_amount}}
-                </div>
-              </div>
+    <div class="login" *ngIf="login==1" >
+        <div class="container-fluid"  >
+          <div class="text-center">
+            <div class="h5">
+              PLEASE LOG IN
+            </div>
+            <div class="text-secondary">
+              Login to view items in your ORDER.
+            </div>
+            <br>
+            <div class="loginButton" (click)="goToLogin()">
+              LOGIN
+            </div>
+          </div>
         </div>
-      <!-- </div>
-      <div class="col-md-2"></div> -->
-    <!-- </div> -->
+      </div>
+      <div class="login" *ngIf="login==11" >
+        <div class="container-fluid"  >
+          <div class="text-center">
+            <div class="h5">
+              No Order found
+            </div>
+            <br>
+            <div class="loginButton" (click)="goToHome()">
+              CONTINUE SHOPPING
+            </div>
+          </div>
+        </div>
+      </div>
+  <div class="container" *ngIf="login==0">
+    <div class="h5 text-secondary">
+      Your Orders
+    </div>
+    <br>
+    <div class="card mb-4" *ngFor="let product of allProduct;let index=index">
+      <div class="card-content">
+        <div>
+          <img  class="card-img" src="http://localhost:4200/assets/Images/list_image/{{product.image}}">
+        </div>
+        <div>
+          <div class="card-body">
+            <div>
+              <p>
+                <span class="h6">Order No. <b>{{product.orderId}}</b> </span>
+                <span class="right h6"><b> &#36;{{product.price  | number : '1.2-2'}}</b> &nbsp;<span class="text-secondary"><del>&#36;{{product.discounted_price | number : '1.2-2'}}</del></span></span>
+              </p>
+            </div>
+            <div class="orderTitle">
+              <b>{{product.name}}</b>
+            </div>
+            <div class="description text-secondary">
+              {{product.description}}
+            </div>
+            <div class="text-secondary">
+              Size : {{order.attributes.Size}} &nbsp;|&nbsp; Color : {{order.attributes.Color}} &nbsp;|&nbsp; Quantity : {{order.quantity}}
+            </div>
+            <div class="text-secondary">
+              Ordered On : <span>{{order.placedDate | date:'dd/MM/yyyy'}}</span>
+            </div>
+            <div class="text-secondary"  *ngIf="product.cancel!=1">
+              Shipped Till : <span>{{order.deliveryDate | date:'dd/MM/yyyy'}}</span>
+            </div>
+            <div class="cancelButton" *ngIf="product.cancel==0" (click)='cancelOrder(product)'>
+              <b>Cancel Item</b>
+            </div>
+            <div class="cancelled" *ngIf="product.cancel==1">
+              <b>Cancelled</b>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

@@ -1,5 +1,12 @@
 <div class="container">
+  
   <div>
+      <!-- <div class="alert alert-warning alter-dismissible fade show" role="alert">
+          Enter valid <strong>Email</strong>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>  
+        </div> -->
       <div class="py-5">
           <div class="row">
             <div class="col-md-6 mx-auto">
@@ -23,6 +30,7 @@
                       class="form-control input-underline input-lg h5"
                       name="email"
                       id="input-email"
+                      maxlength="30"
                       pattern=".+@.+\..+"
                       placeholder="Email address"
                       required
@@ -64,11 +72,11 @@
                         </ng-container>
                       </div>
                       <div class="form-control-group">
-                        <button type="submit" (click)="loginUser()" class="btn btn-success btn-block h4" [disabled]="submitted || !form.valid"><i class="ion-md-key"></i> &nbsp;Login</button>
+                        <button type="submit" (click)="loginUser()" class="btn btn-success btn-block h4" [disabled]="!form.valid"><i class="ion-md-key"></i> &nbsp;Login</button>
                       </div>
                   </form>
-                  <a class="link" href="#">
-                    <div>
+                  <a class="link" (click)="resetPassword()">
+                    <div class="text-primary"> 
                       Forgot password?
                     </div>
                   </a>

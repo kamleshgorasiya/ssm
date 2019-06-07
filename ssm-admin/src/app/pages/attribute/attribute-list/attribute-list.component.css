@@ -1,0 +1,105 @@
+.main-container{
+    margin-left: 30px;
+    margin-top:30px;
+}
+.add-attribute{
+    width:100%;
+}
+.card{
+    width:100%;
+    border:none;
+    margin-right:10px;
+}
+.card-header{
+    color: #337ab7;
+    background-color: aliceblue;
+}
+input{
+    margin-top:5px;
+}
+.dropdown-toggle{
+    margin-left: 20px;
+}
+.card-footer{
+    background-color: white;
+    border:none;
+}
+.selectAll{
+  display: flex;
+  border-bottom:0px;
+}
+
+.display-category{
+    margin-top:30px;
+}
+.table-striped>tbody>tr:nth-child(odd)>td, 
+.table-striped>tbody>tr:nth-child(odd)>th {
+   background-color: aliceblue; 
+ }
+ .edit{
+     font-size: 20px;
+     border-radius: 50px;
+     color: #337ab7;
+     border:#337ab7 1px solid;
+     background-color: transparent;
+ }
+ .delete{
+    font-size: 20px;
+    margin-left:15px;
+    border-radius: 50px;
+    color: #c82333;
+    border:#c82333 1px solid;
+    background-color: transparent; 
+ }
+ .page-item{
+     margin-right:10px;
+     cursor: pointer;
+ }
+
+.btn{
+  margin-left:10px;
+  margin-bottom: 10px;
+}
+th{
+  cursor: pointer;
+}
+.right{
+  float: right;
+}
+.searchbar{
+  width:550px;
+  display: flex;
+}
+.search_input{
+  width:350px;
+  border-radius: 50px;
+ 
+}
+.search_input:focus{
+  border-color: #337ab7;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px #337ab7;
+  outline: 0 none;
+}
+.search_icon{
+  width:40px;
+  height: 37px;
+  border-radius: 50px;
+  background-color: #337ab7;
+  color: white;
+  margin-top:6px;
+  margin-left:-40px;
+  cursor: pointer;
+}
+
+.search_container{
+  width:360px;
+}
+
+.ion-md-search:before {
+  margin-top:10px;
+}
+
+.filterAttribute{
+  margin-right:10px;
+  margin-top:5px;
+}

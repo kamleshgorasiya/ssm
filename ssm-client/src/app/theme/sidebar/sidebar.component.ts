@@ -16,7 +16,6 @@ export class SidebarComponent implements OnInit {
     this.categoryService.getCategory()
       .subscribe(
         res=>{
-          //console.log(res);
           this.categories=res;
         },
         err=>{

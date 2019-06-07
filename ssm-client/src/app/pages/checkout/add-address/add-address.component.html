@@ -50,20 +50,15 @@
             </div>
             <div class="country-content">
               <label>Shipping Region  <span class="text-danger">*</span></label><br>
-              <select [(ngModel)]="region_id" name="region_id" (change)="regionChange()">
+              <select [(ngModel)]="region_id" name="region_id">
                 <option *ngFor="let region of shippingRegions" [ngValue]="region.shipping_region_id">{{region.shipping_region}}</option>
               </select>
             </div>
-            <div class="country-content">
-              <label>Shipping Options  <span class="text-danger">*</span></label><br>
-              <select [(ngModel)]="shippingOption" name="shippingOptions" placeholder="Please Select">
-                <option *ngFor="let option of displayOptions" [ngValue]="option.shipping_id">{{option.shipping_type}}</option>
-              </select>
-            </div>
+            
             <p class="text-danger">{{selectError}}</p>
           </div>
           <div class="save">
-            <button class="btn btn-primary" name="save" [disabled]="submitted || !form.valid" (click)="saveAddress()">Save Address</button>
+            <button class="btn btn-primary" name="save" [disabled]="!form.valid" (click)="saveAddress()">Save Address</button>
           </div>
     </form>
     

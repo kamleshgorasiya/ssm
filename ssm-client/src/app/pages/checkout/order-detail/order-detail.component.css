@@ -1,14 +1,82 @@
 .main{
-    margin-top:150px;
+    margin-top:120px;
+    margin-bottom: 190px;
 }
-
+.login{
+    margin-top:280px;
+    margin-bottom:200px;
+}
 .card{
     margin-right:20px;
-    width:500px;
+    width:800px;
     margin-bottom: 20px;
 }
-@media(max-width:414px){
+.card-content{
+    display: -webkit-flex;
+}
+.loginButton{
+    border: solid 1px #3466E8;
+    border-radius: 4px;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 14.5px 51px;
+    color: #3466E8;
+    cursor: pointer;
+    display: inline-block;
+}
+.right{
+    float: right;
+}
+.attributes{
+    font-weight: 500;
+}
+.cancelButton{
+    background: #fff;
+    color: #0c4abd;
+    cursor: pointer;
+    border: 1px solid #0c4abd;
+    display: inline-block;
+    font-size: 14px;
+    padding: 5px;
+    text-align: center;
+    border-radius: 2px;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    margin-top: 8px;
+}
+.orderTitle{
+    text-transform: uppercase;
+}
+.date{
+    font-weight:500;
+}
+.cancelled{
+    color:#ff3a3a;
+    margin-top:10px;
+}
+.description{
+    white-space: nowrap;
+    width:600px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inherit;  
+}
+.card-img{
+    height:241px;
+    width:150px;
+}
+.card-footer{
+    background-color: #fff;
+}
+@media(max-width:1024px){
     .main{
-        margin-top:250px;
+        margin-top:80px;
+    }
+    .description{
+        width: 350px;
+    }
+    .card{
+        width: 550px;
+     
     }
 }

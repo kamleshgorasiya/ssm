@@ -62,25 +62,27 @@ export class ProductDetailComponent implements OnInit {
            console.log(err);
          }
        )
-         this._cartService.getWishlistProduct()
-         .subscribe(
-           res=>{
-             let products=res[1];
-             if(products.length>0){
-              for(let i=0;i<products.length;i++){
-                if(products[i].product_id==product.product_id){
-                  this.wishlist="WISHLISTED";
-                  break;
-                } else {
-                  this.wishlist="ADD TO WISHLIST";
-                }
-              }
-             } else {
-              this.wishlist="ADD TO WISHLIST";
+       if(this.authService.loggedIn()){
+        this._cartService.getWishlistProduct()
+        .subscribe(
+          res=>{
+            let products=res[1];
+            if(products.length>0){
+             for(let i=0;i<products.length;i++){
+               if(products[i].product_id==product.product_id){
+                 this.wishlist="WISHLISTED";
+                 break;
+               } else {
+                 this.wishlist="ADD TO WISHLIST";
+               }
              }
-             
-           }
-         )
+            }
+          }
+        )
+       } else {
+         this.wishlist="ADD TO WISHLIST";
+       }
+         
       }
     )
   }
@@ -141,6 +143,7 @@ export class ProductDetailComponent implements OnInit {
             this._cartService.addToBag(cart)
             .subscribe(
               res=>{
+                //@ts-ignore
                 window.alert(res.message);
                 this._dataExchangeService.changeCartData("added")
               }
@@ -166,6 +169,7 @@ export class ProductDetailComponent implements OnInit {
           this._cartService.addToWishlist(wishlist)
           .subscribe(
             res=>{
+              //@ts-ignore
               window.alert(res.message);
               this._router.navigate(['']);
               this._dataExchangeService.changeWishlistData("added");

@@ -1,0 +1,130 @@
+<div class="main-container">
+  <div class="card">
+    <div class="card-header">
+      Upload Images of Products (Supported format :- .jpg, .jpeg, .png, .gif )
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="image-container">
+          <div class="card image-card">
+            <div class="card-header">
+              Main Image
+            </div>
+            <div class="card-body">
+              <form enctype="multipart/form-data">
+                <div class="image">
+                    <img [src]="images[0]" alt="Add-image" width="100%" height="100%"> 
+                </div>
+                
+                <input class="custome-file-input" #file1 type="file" id="file" accept=".png, .jpg ,.jpeg ,.gif" (change)="changeImage(file1.files,0,$event)">
+                <button class="btn btn-outline-success" style="margin-top:10px;width:100%;" (click)="uploadImage(file1.files,0)" [disabled]="uploadLabel[0]==='Image Uploaded'">{{uploadLabel[0]}}</button>
+              </form>
+              
+  
+            </div>
+          </div>
+        </div>
+        <div class="image-container">
+          <div class="card image-card">
+            <div class="card-header">
+              Image 1
+            </div>
+            <div class="card-body">
+              <form enctype="multipart/form-data">
+                <div class="image">
+                    <img [src]="images[1]" alt="Add-image" width="100%" height="100%"> 
+                </div>
+                
+                <input #file2 type="file" id="file" (change)="changeImage(file2.files,1,$event)">
+                <button class="btn btn-outline-success" style="margin-top:10px;width:100%;" (click)="uploadImage(file2.files,1)" [disabled]="uploadLabel[1]==='Image Uploaded'">{{uploadLabel[1]}}</button>
+
+              </form>
+              
+  
+            </div>
+          </div>
+        </div>
+        <div class="image-container">
+          <div class="card image-card">
+            <div class="card-header">
+              Image 2
+            </div>
+            <div class="card-body">
+              <form enctype="multipart/form-data">
+                <div class="image">
+                    <img [src]="images[2]" alt="Add-image" width="100%" height="100%"> 
+                </div>
+                
+                <input #file3 type="file" id="file" (change)="changeImage(file3.files,2,$event)">
+                <button class="btn btn-outline-success" style="margin-top:10px;width:100%;" (click)="uploadImage(file3.files,2)" [disabled]="uploadLabel[2]==='Image Uploaded'">{{uploadLabel[2]}}</button>
+
+              </form>
+              
+  
+            </div>
+          </div>
+        </div>
+        <div class="image-container">
+            <div class="card image-card">
+              <div class="card-header">
+                Image 3
+              </div>
+              <div class="card-body">
+                <form enctype="multipart/form-data">
+                  <div class="image">
+                      <img [src]="images[3]" alt="Add-image" width="100%" height="100%" >
+                  </div>
+                  
+                  <input #file4 type="file" id="file" (change)="changeImage(file4.files,3,$event)">
+                  <button class="btn btn-outline-success" style="margin-top:10px;width:100%;" (click)="uploadImage(file4.files,3)" [disabled]="uploadLabel[3]==='Image Uploaded'">{{uploadLabel[3]}}</button>
+
+                </form>
+                
+    
+              </div>
+            </div>
+          </div>
+        <div class="image-container">
+          <div class="card image-card">
+            <div class="card-header">
+              Image 4
+            </div>
+            <div class="card-body">
+              <form enctype="multipart/form-data">
+                <div class="image">
+                    <img [src]="images[4]" alt="Add-image" width="100%" height="100%"> 
+                </div>
+
+                <input #file5 type="file" id="file" (change)="changeImage(file5.files,4,$event)">
+                <button class="btn btn-outline-success" style="margin-top:10px;width:100%;" (click)="uploadImage(file5.files,4)"  [disabled]="uploadLabel[4]==='Image Uploaded'">{{uploadLabel[4]}}</button>
+
+              </form>
+
+
+            </div>
+          </div>
+        </div>
+        <div class="image-container">
+          <div class="card image-card">
+            <div class="card-header">
+              Image 5
+            </div>
+            <div class="card-body">
+              <form enctype="multipart/form-data">
+                <div class="image">
+                    <img [src]="images[5]" alt="Add-image" width="100%" height="100%"> 
+                </div>
+                
+                <input #file6 type="file" id="file" (change)="changeImage(file6.files,5,$event)">
+                <button class="btn btn-outline-success" style="margin-top:10px;width:100%;" (click)="uploadImage(file6.files,5)" [disabled]="uploadLabel[5]==='Image Uploaded'">{{uploadLabel[5]}}</button>
+
+              </form>
+              
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

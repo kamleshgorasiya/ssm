@@ -1,0 +1,146 @@
+<div class="main-container">
+  <div class="add-category">
+    <div class="card">
+      <div class="card-header h5">
+        Add Product Category :-
+      </div>
+      <div class="card-body">
+        <form class="form" #form="ngForm">
+        <div class="form-group">
+          <label class="label" for="category-name">Category Name :-</label>
+          <br>
+          <input type="text" name="category-name" class="form-control fullwidth" [(ngModel)]="categoryAdd.name" #name=ngModel maxlength="20" minlength="2" placeholder="Enter Category Name" required>
+          <ng-container *ngIf="name.invalid && name.touched">
+            <p class="text-danger" *ngIf="name.errors?.required">
+              Category name is required
+            </p>
+            <p class="text-danger" *ngIf="!name.errors?.required">
+              Name should be of minimum 2 character 
+            </p>
+          </ng-container>
+        </div>
+        <div class="form-group">
+          <label class="label" for="category-name">Description :-</label>
+          <br>
+          <input type="text" name="category-description" class="form-control fullwidth" [(ngModel)]="categoryAdd.description" minlength="2" placeholder="Enter Description">
+        </div>
+        <div class="form-group">
+          <label class="label" for="departments">Select Department :-</label>
+          <button class="btn btn-info outline dropdown-toggle" id="departmenutbtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{selectedDepartment.name}}
+          </button>
+          
+            <span style="margin-left:15px;" class="text-danger">
+              {{departmentErrorText}}
+            </span>
+    
+          <div class="dropdown-menu" aria-labelledby="departmenutbtn">
+            <a class="dropdown-item" *ngFor="let department of departments" (click)="selectDepartment(department)">{{department.name}}</a>
+          </div>
+        </div>
+        <div class="form-group" style="margin-top:30px;">
+          <button type="submit" [disabled]="!form.valid" class="btn btn-outline-info" *ngIf="btnStatus==0" (click)="addCategory()">Add Category</button>
+          <button class="btn btn-outline-info" (click)="updateCategory()" *ngIf="btnStatus==1">Update Category</button>
+          <button class="btn btn-outline-dark" (click)="cancelCategory()" style="margin-left:20px;">Cancel</button>
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>
+  <div class="display-category">
+    <div class="card">
+      <div class="card-header h5">
+        <span>List of Categories :-</span>
+        <span class="right">
+            <div class="searchbar">
+                <div class="filterCategory">
+                    <button class="btn btn-info outline dropdown-toggle" id="departmenutbtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      {{filterDepartment.name}}
+                    </button>
+              
+                    <div class="dropdown-menu" aria-labelledby="departmenutbtn">
+                      <a class="dropdown-item" *ngFor="let department of departments" (click)="filterDepartments(department)">{{department.name}}</a>
+                    </div>
+                  </div>
+              <div class="search-container">
+                  <input type="search" class="form-control search_input" [(ngModel)]="search" (keyup.enter)="searchCategory()" placeholder="Search here...">
+              </div>
+              <div class="search_icon text-center" (click)="searchCategory()">
+                <span class="icon"><i class="ion-md-search"></i></span>
+              </div>
+            </div>
+          </span>
+      </div>
+      <div class="card-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col" (click)="sortData('id')">No.
+                <i class="ion-md-arrow-dropup" *ngIf="sorting===1 && sortKey===1"></i>
+                <i class="ion-md-arrow-dropdown" *ngIf="sorting===11 && sortKey===1"></i>
+              </th>
+              <th scope="col" (click)="sortData('name')">Name.
+                <i class="ion-md-arrow-dropup" *ngIf="sorting===1 && sortKey===2"></i>
+                <i class="ion-md-arrow-dropdown" *ngIf="sorting===11 && sortKey===2"></i>
+              </th>
+              <th scope="col" (click)="sortData('department')">Department
+                <i class="ion-md-arrow-dropup" *ngIf="sorting===1 && sortKey===3"></i>
+                <i class="ion-md-arrow-dropdown" *ngIf="sorting===11 && sortKey===3"></i>
+              </th>
+              <th scope="col">Active
+                
+              </th>
+              <th scope="col">Action
+              </th>
+              <th scope="col" class="selectAll">Select All &nbsp;&nbsp;
+                <label class="check-container">
+                  <input type="checkbox" [checked]="selectAllStatus" (change)="selectAll($event)">
+                  <span  class="checkboxes"></span>
+                </label>
+                
+                
+              </th>
+              <button class="btn btn-outline-success btn-sm" (click)="setActivation(1)">Enable</button>
+              <button class="btn btn-outline-secondary btn-sm" (click)="setActivation(0)">Disable</button>
+              <button class="btn btn-outline-danger btn-sm" (click)="deleteAllCategory()">Delete</button>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let category of categories;let index=index">
+              <td>{{category.category_id}}</td>
+              <td>{{category.name}}</td>
+              <td>{{category.dname}}</td>
+              <td>
+                <label class="switch">
+                <input type="checkbox" [checked]="category.active" (change)="changeStatus(category,$event)" class="checkSwitch">
+                <span class="slider round"></span>
+              </label>
+              </td>
+              <td>
+                <button class="edit"  (click)="editCategory(category)"><i class="ion-md-create"></i></button>
+                <button class="delete" (click)="deleteCategory(category)"><i class="ion-md-trash"></i></button>
+              </td>
+              <td>
+                <label class="check-container">
+                    <input type="checkbox" (change)="changeSelection(index,$event)" [checked]="selectedCategory[index].selected">
+                    <span  class="checkboxes"></span>
+                </label>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card-footer">
+        <nav aria-label="Page">
+          <ul class="pagination justify-content-center">
+            <li class="page-item" *ngIf="currentPage!=1" (click)="changePage(1)"><a class="page-link">First</a></li>
+            <li class="page-item" *ngIf="currentPage!=1" (click)="changePage(currentPage-1)"><a class="page-link"><i class="ion-md-skip-backward"></i></a></li>
+            <li class="page-item" [class.active]="pageno==currentPage" (click)="changePage(pageno)" *ngFor="let pageno of displayPages"><a class="page-link">{{pageno}}</a></li>
+            <li class="page-item" *ngIf="currentPage!=lastPage" (click)="changePage(currentPage+1)"><a class="page-link"><i class="ion-md-skip-forward"></i></a></li>
+            <li class="page-item" *ngIf="currentPage!=lastPage" (click)="changePage(lastPage)"><a class="page-link">Last</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>

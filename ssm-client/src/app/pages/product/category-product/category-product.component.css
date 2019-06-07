@@ -1,0 +1,181 @@
+.ab{
+    float: left;
+}
+.card:hover{
+    -webkit-box-shadow: -1px 2px 20px -15px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 2px 40px -15px rgba(0,0,0,0.75);
+    box-shadow: -1px 1px 20px -15px rgba(0,0,0,0.75);
+}
+
+.card .reveal{
+    display: none;
+}
+
+.card:hover .reveal{
+    display: inline-block; 
+    position:absolute;
+
+}
+.hidenav{
+    visibility: hidden;
+}
+.show{
+    visibility: visible;
+}
+.card:hover .hide{
+    transition-duration: 0.3s;
+    transform: translate(0px,-50px);
+}
+.hide{
+    background-color: white;
+}
+.card .hide{
+    display: block; 
+}
+.card .card-footer{
+    background-color: white;
+    border-top: 0px;
+    
+}   
+.dot {
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.card{
+    border:0px;
+    width: 225px;
+    text-align: left;
+    position: relative;
+    margin: 10px 30px 10px 10px;
+}
+.continued{
+    white-space: nowrap;
+    width:150px;
+    overflow:hidden;
+    text-overflow: ellipsis;
+}
+.actionButton{
+    letter-spacing: 0.3px;
+    font-weight: 500;
+    font-size: 11px;
+}
+.dummyCard{
+    visibility: hidden;
+}
+.products{
+    display: -webkit-flex;
+    width: 100%;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    flex-wrap: wrap;
+    -webkit-box-align: stretch;
+
+    align-items: stretch;
+    align-content: stretch;
+    margin: 0 -10px 0 3px;
+    width: 100%;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+.mainDiv{
+    
+    margin-right:20px;
+    
+    display: flex;
+}
+.price{
+    margin-top:5px;
+    margin-bottom:5px;
+}
+.page-item{
+    margin:5px;
+    cursor: pointer;
+}
+.main{
+    margin-left:250px;
+    margin-right:50px;
+    padding-top:120px;
+}
+.product-name{
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1;
+    color: #282c3f;
+    margin-bottom: 6px;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.product-description{
+    color: #535766;
+    font-size: 14px;
+    line-height: 1;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 400;
+    display: block;
+}
+.discount{
+    color: #7e818c;
+    font-weight: 400;
+    margin-left: 5px;
+    font-size: 12px;
+}
+.sizes{
+    font-size: 14px;
+    color: #535665;
+    line-height: 1;
+    white-space: nowrap;
+    font-weight: 400;
+}
+.img{
+    cursor: pointer;
+}
+.wishlist{
+    margin-top:5px;
+    margin-bottom: 5px;
+    margin-left:8px;
+}
+.footer{
+    margin-left:-250px;
+    margin-right:-100px;
+}
+
+@media (max-width: 1024px) {
+    .main{
+        padding-top:70px;
+        margin-left:0px;
+        width:410px;
+        margin-right: 0px;
+    }
+    .footer{
+        display: none;
+    }
+    .card{
+        width:215px;
+        margin: 0px 0px 0px 4px;
+    }
+    .mainDiv{
+        margin-right: 0px;
+    }
+}
+
+@media only screen and (max-width:1400px) and (min-width:1024px){
+    .main{
+        margin-right:5px;
+        margin-left:90px;
+    }
+    .footer{
+        margin-left:-90px;
+        margin-right:-5px;
+    }
+}

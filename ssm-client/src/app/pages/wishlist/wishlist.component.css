@@ -20,7 +20,7 @@
 }
 .continued{
     white-space: nowrap;
-    width:190px;
+    width:130px;
     overflow:hidden;
     text-overflow: ellipsis;
 }
@@ -66,9 +66,24 @@
     visibility: hidden;
 }
 
-@media(max-width:360px){
+@media(max-width:414px){
     .main{
         padding-left: 0px;
         padding-top:200px;
+    }
+}
+
+@media(max-width:1500px){
+    .card{
+        width:300px;
+    }
+    .main{
+        padding-left: 10px;
+    }
+    .mainDiv{
+        margin-right:10px;
+    }
+    .card-img-top{
+        height: 200px;
     }
 }

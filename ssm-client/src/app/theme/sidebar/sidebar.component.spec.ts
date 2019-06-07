@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SidebarComponent } from './sidebar.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { FormsModule } from '@angular/forms';
+import { HeaderSetter } from 'src/app/core/data/header-setter';
 
 describe('SidebarComponent', () => {
   let component: SidebarComponent;
@@ -8,7 +12,9 @@ describe('SidebarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SidebarComponent ]
+      declarations: [ SidebarComponent ],
+      imports:[HttpClientTestingModule,RouterTestingModule,FormsModule],
+      providers:[HeaderSetter]
     })
     .compileComponents();
   }));

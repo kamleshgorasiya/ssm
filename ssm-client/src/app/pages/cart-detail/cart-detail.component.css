@@ -1,5 +1,25 @@
 .main{
-    margin-top:150px;
+    margin-top:70px;
+}
+.cart-hide{
+    visibility: hidden;
+}
+.cart-show{
+    visibility: visible;
+}
+.wishlist-button{
+    background: #fff;
+    color: #ff3f6c;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid #ff3f6c;
+    display: inline-block;
+    font-size: 14px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 2px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 .card-img{
     height:217px;
@@ -33,7 +53,7 @@
     background-color: white;
 }
 .line{
-    width:635px;
+    width:590px;
 }
 .remove-link{
     cursor: pointer;
@@ -56,10 +76,10 @@
     text-align: right;
 }
 .card{
-    width: 820px;
+    width: 770px;
 }
 .heading{
-    width:820px;
+    width:770px;
 }
 .secondary{
     color: #535766;
@@ -75,22 +95,81 @@
     left: -70px;
 }
 .price-card{
-    margin-top:60px;
+    margin-top:40px;
     width:400px;
-    left:-100px;
+    margin-left:20px;
+
+}
+.second-price-card{
+    margin-top:40px;
+    width:400px;
+    margin-left:20px;
+    display: none;
 }
 .right{
     float: right;
 }
-@media(max-width:414px){
-    .price-card{
-        left:0px;
-    }
+@media(max-width:1024px){
     .stepper{
+        margin-left: -300px;
+        visibility: hidden;
+    }
+    .main{
+        width:400px;
+    }
+    .card-body{
+        width:350px;
+    }
+    .cart-data{
+        margin-top:-200px;
+    }
+    .info{
+        width: 400px;
+    }
+    .price{
+        text-align: right;
+    }
+    .blank{
         display: none;
     }
-    .space{
+    .detail{
+        left:00px;
+        width:500px;
+        top:-200px;
+    }
+    .detail-card{
+        width:500px;
+        margin-left: 15px;
+        
+    }
+    .price-card{
+        top:-200px;
         display: none;
+    }
+    .second-price-card{
+        display: block;
+        margin-left:0px;
+        margin-top:5px;
+    }
+    .info{
+        width: 350px;
+    }
+    .line{
+        width:320px;
+        visibility: hidden;
+    }
+    .heading{
+        width:500px;
+        margin-left: 15px;
+    }
+
+    .header{
+        width:340px;
+
+    }
+    .cart-content{
+        width:350px;
+        
     }
 }
 
@@ -99,7 +178,7 @@
     font-size: 14px;
     font-weight: 600;
     padding: 10px;
-    background: #ff3f6c;
+    background: #337AB7;
     cursor: pointer;
     text-align: center;
     border: none;
@@ -115,4 +194,12 @@
 }
 .stepper hr{
     border:2px solid #20bd99;
+}
+.empty{
+    margin-top:250px;
+    margin-bottom:185px;
+}
+.cart-data{
+    display: flex;
+    margin-bottom:145px;
 }

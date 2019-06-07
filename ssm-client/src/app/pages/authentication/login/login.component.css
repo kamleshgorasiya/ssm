@@ -1,5 +1,5 @@
 .container{
-    margin-top:150px;
+    margin-top:70px;
 }
 .card-header{
     background-color: white;
@@ -9,4 +9,7 @@
 }
 .btn{
     margin-top:20px;
+}
+.link{
+    cursor: pointer;
 }

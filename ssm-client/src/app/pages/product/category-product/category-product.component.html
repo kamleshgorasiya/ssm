@@ -1,0 +1,74 @@
+<div class="main">
+  
+    <div>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="">Home</a></li>
+          <li class="breadcrumb-item"><a routerLink="/products">All Product</a></li>
+          <li class="breadcrumb-item active">{{categoryName}}</li>
+        </ol>
+      </nav>
+    </div>
+    <div class="h5 text-secondary fixed">
+      {{categoryName}}
+      <hr>
+    </div>
+    <div class="row">
+      <div (mouseenter)="onHover(index)" class="mainDiv"  *ngFor="let product of products;let index=index">
+        <div class="card card-block card-hover">
+                  <a class="img" (click)="imageClick(product.product_id)">
+                  <img src="http://localhost:4200/assets/Images/list_image/{{product.image[0]}}" class="card-img-top" height="300px" width="100%" alt="product-image">
+                </a>
+            <div class="card-body hide" >
+                
+              <div>
+                  <div id="productName"><h3 class="product-name">{{product.name}}</h3></div>
+              
+                  <div class="card-text continued"><h4 class="product-description">{{product.description}}</h4></div>
+                  <div class="price"> 
+                    <p class="card-text text-dark h6 ">
+                      <span>
+                          &#36;{{product.price}}
+                      </span>
+                      <span class="card-text discount" *ngIf="product.price!=product.discounted_price">
+                          &nbsp;<del>&#36;{{product.discounted_price | number : '1.2-2' }} </del>
+                      </span>
+                    </p>
+                  </div>
+              </div>
+              <div style="margin-bottom: 20px;">
+                <p class="reveal sizes">
+                  <span>Sizes : 
+                    <span *ngFor="let size of sizes;let last=last;">
+                      <span >{{size}}<span *ngIf="!last">, </span></span>
+                    </span>
+                  </span>
+                  <br>
+                  <span>
+                      <button class="btn btn-small text-light actionButton" style="background-color: #337AB7;" (click)="addToBag(product.product_id)">ADD TO BAG</button>
+                  
+                      <button class="btn btn-small btn-outline-dark actionButton wishlist" (click)="addToWishList(product.product_id)" [disabled]="wishlist[index]=='WISHLISTED'">{{wishlist[index]}}</button>  
+                  </span>
+                </p>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <nav aria-label="Page">
+        <ul class="pagination justify-content-center">
+          <li class="page-item" *ngIf="currentPage!=1" (click)="paging(1)"><a class="page-link">First</a></li>
+          <li class="page-item" *ngIf="currentPage!=1" (click)="paging(previous)"><a class="page-link"><i class="ion-md-skip-backward"></i> </a></li>
+          <li class="page-item" *ngFor="let page of pages" (click)="paging(page)"  [class.active]="page==currentPage"><a class="page-link">{{page}}</a></li>
+          <li class="page-item" *ngIf="currentPage!=lastPage" (click)="paging(next)"><a class="page-link"> <i class="ion-md-skip-forward"></i></a></li>
+          <li class="page-item" *ngIf="currentPage!=lastPage" (click)="paging(lastPage)"><a class="page-link">Last</a></li>
+        </ul>
+      </nav>
+    </div>
+    <!-- <div class="footer">
+        <app-footer></app-footer>
+    </div> -->
+</div>
+
+

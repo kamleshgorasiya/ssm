@@ -28,7 +28,6 @@
 }
 .hide{
     background-color: white;
-    
 }
 .card .hide{
     display: block; 
@@ -48,11 +47,20 @@
 
 .card{
     border:0px;
-    float:none;
+    width: 225px;
+    text-align: left;
+    position: relative;
+    vertical-align: top;
+   
+    display: inline-block;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 10px 10px 30px 10px;
 }
 .continued{
     white-space: nowrap;
-    width:200px;
+    width:150px;
     overflow:hidden;
     text-overflow: ellipsis;
 }
@@ -77,30 +85,70 @@
     cursor: pointer;
 }
 .main{
-    padding-left: 235px;
+    margin-left:250px;
+    margin-right:20px;
     padding-top:120px;
     float:left;
+    -webkit-align-self: flex-start;
+    -ms-flex-item-align: start;
+    align-self: flex-start;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -moz-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
 }
 .img{
     cursor: pointer;
 }
-@media (max-width: 249px) {
-    .main {
-        padding-left:4px;
-    }
+.wishlist{
+    margin-top:5px;
+    margin-bottom: 5px;
+    margin-left:8px;
 }
-@media (min-width: 249px) {
-    .main {
-        padding-left:20px;
-    }
+.row{
+    /* display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -moz-box-orient: horizontal;
+    -moz-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: stretch;
+    -webkit-align-items: stretch;
+    -moz-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    -webkit-align-content: stretch;
+    -ms-flex-line-pack: stretch;
+    align-content: stretch;
+    margin: 0 -10px 0 3px;
+    width: 100%;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -moz-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between; */
 }
-@media (min-width: 993px) {
-    .main {
-        padding-left:235px;
-        padding-top:110px;
-    }
-}
-@media (max-width: 394px) {
+@media (max-width: 414px) {
     .main {
         padding-top:200px;
     }
@@ -109,18 +157,20 @@
     }
 }
 
-@media (min-width: 394px) {
-    .main {
-        padding-top:165px;
-    }
-}
-@media (min-width: 790px) {
-    .main {
-        padding-top:140px;
-    }
-}
-@media (min-width: 1260px) {
+
+@media (max-width: 1500px) {
     .main {
         padding-top:120px;
+        margin-left:20px;
+    }
+    .card{
+        margin-right: 20px;
+        width:200px;
+    }
+    .wishlist{
+        margin-left:5px;
+    }
+    .actionButton{
+        font-size: 9.5px;
     }
 }

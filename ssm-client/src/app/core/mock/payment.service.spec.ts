@@ -1,12 +1,17 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed,async,inject } from '@angular/core/testing';
 
 import { PaymentService } from './payment.service';
+import { HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
+import { HeaderSetter } from '../data/header-setter';
 
 describe('PaymentService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+  beforeEach(() => TestBed.configureTestingModule({
+    imports:[HttpClientTestingModule],
+    providers:[HeaderSetter]
+  }));
 
-  it('should be created', () => {
-    const service: PaymentService = TestBed.get(PaymentService);
-    expect(service).toBeTruthy();
-  });
+  it(`should create`, async(inject([HttpTestingController, PaymentService],
+    (categoryService: PaymentService) => {
+      expect(categoryService).toBeTruthy();
+  })));
 });

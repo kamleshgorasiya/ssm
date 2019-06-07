@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/core/mock/auth.service';
 import { DataExchangeService } from 'src/app/core/mock/data-exchange.service';
-import { HttpErrorResponse } from '@angular/common/http';
 import { Cart } from 'src/app/core/data/cart';
 import { ProductService } from 'src/app/core/mock/product.service';
 import { CartService } from 'src/app/core/mock/cart.service';
@@ -15,17 +14,19 @@ import { CartService } from 'src/app/core/mock/cart.service';
 export class LoginComponent implements OnInit {
   errorText="";
   user:any={};
+
   constructor(private route:ActivatedRoute,
               private _authService:AuthService,
               private _router:Router,
               private dataService:DataExchangeService,
               private _productService:ProductService,
               private _cartService:CartService) { 
-    
   }
 
   ngOnInit() {
   }
+
+  // Log in the user and store the JWT in localstorage.
 
   loginUser(){
     this._authService.loginUser(this.user)
@@ -37,16 +38,29 @@ export class LoginComponent implements OnInit {
           res=>{
              this.dataService.changeUserName(res[0])
              this.addCartData();
-             this._router.navigate(['']);
+             let data=localStorage.getItem("reference");
+             if(data=="cart"){
+              
+               this._router.navigate(["cart"]);
+               localStorage.removeItem("reference");
+             } else {
+              if(data=="wishlist"){
+                this._router.navigate(["wishlist"]);
+                localStorage.removeItem("reference");
+              } else {
+               this._router.navigate(['']);
+              }
+             }
           },
         )
-        
       },
       err=>{
-        this.errorText=err.error;
+        this.errorText=err.error.message;
       }
     )
   }
+
+  // If user succesfully loged in, it will store the localstorage cart data into database.
 
   addCartData(){
     let data=localStorage.getItem("cart");
@@ -62,5 +76,18 @@ export class LoginComponent implements OnInit {
       )
     } catch(e){
     }
+  }
+
+  // Go to reset password if email is filled
+
+  resetPassword(){
+    let regex=new RegExp('.+@.+\..+');
+    let test=regex.test(this.user.email);
+    if(test===true){
+      
+    } else {
+      alert("Enter valid email");
+    }
+    //this._router.navigate(['reset-password']);
   }
 }

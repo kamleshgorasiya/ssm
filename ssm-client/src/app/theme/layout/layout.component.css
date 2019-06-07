@@ -1,9 +1,24 @@
 .main{
     padding-left: 235px;
-    padding-top:120px;
+    margin-top:70px;
     float:left;
+    min-height: 100%;
+    /* now that it is 100% the height, we 'pull' the footer up */
+    /* margin-bottom must be the same height as the footer height below */
+    margin-bottom: -271px; 
 }
-@media (max-width: 249px) {
+.footer{
+   position: relative;
+   bottom: 0;
+   left: 0;
+   
+   height: 271px;
+   
+}
+.main-container{
+    height: 100%;
+}
+/* @media (max-width: 249px) {
     .main {
         padding-left:4px;
     }
@@ -39,4 +54,4 @@
     .main {
         padding-top:120px;
     }
-}
+} */

@@ -1,0 +1,22 @@
+.main-container{
+    margin-left: 30px;
+    margin-top:50px;
+    width: 100%;
+}
+.card{
+    border:none;
+    margin-right:10px;
+    margin-bottom: 20px;
+    width:97%;
+}
+.card-header{
+    color: #337ab7;
+    background-color: aliceblue;
+}
+.card-footer{
+    background-color: white;
+    border:none;
+}
+.tab-content{
+    margin-left:20px;
+}

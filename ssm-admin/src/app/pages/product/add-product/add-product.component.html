@@ -1,0 +1,177 @@
+<div class="main-container">
+  <div class="card">
+    <div class="card-header h5">
+      Common Details :-
+    </div>
+    <div class="card-body">
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="description">Description</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" [(ngModel)]="products.description" placeholder="Description">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="department">Department</label>
+        <div class="col-sm-9">
+            <!-- <button class="btn btn-info dropdown-toggle" id="departmenutbtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{selectedDepartment.name}}
+            </button>
+            <div class="dropdown-menu" aria-labelledby="departmenutbtn">
+              <a class="dropdown-item" *ngFor="let department of departments" (click)="selectDepartment(department)">{{department.name}}</a>
+            </div> -->
+            <input list="departments" name="department" id="department" class="attributes" [(ngModel)]="department" (focusout)="selectDepartment(department)" placeholder="Select Department">
+            <datalist id="departments">
+              <option *ngFor="let department of departments">{{department.name}}</option>
+            </datalist>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="category">Category</label>
+        <div class="col-sm-9">
+          <!-- <button class="btn btn-info outline dropdown-toggle" id="departmenutbtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{filterCategory.name}}
+          </button>
+          <div class="dropdown-menu category" aria-labelledby="departmenutbtn">
+            <a class="dropdown-item" *ngFor="let category of categories" (click)="selectCategory(category)">{{category.name}}</a>
+          </div> -->
+          <input list="categories" id="category" name="category" class="attributes" [(ngModel)]="category" (focusout)="selectCategory(category)" placeholder="Select Category">
+          <datalist id="categories">
+            <option *ngFor="let category of categories" [value]="category.name"></option>
+          </datalist>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-9">
+          
+        </div>
+        <div class="col-sm-3 add-variant">
+          <button type="submit" class="btn btn-primary savebtn" (click)="addProduct()">Save Product</button>
+          <button class="btn btn-outline-dark" (click)="cancelProduct()">Cancel</button>
+        </div>
+      </div>  
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header h5">
+      Add Variants :-
+    </div>
+    <div class="card-body">
+      <form class="form" #form="ngForm">
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label" for="name" >Name <span class="text-danger">*</span></label>
+          <div class="col-sm-9">
+            <input type="text" id="vname" (focusout)="changeName()" class="form-control" placeholder="Name" name="variant_name" [(ngModel)]="selectedVariant.name" required>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label" for="price">Price <span class="text-danger">*</span></label>
+          <div class="col-sm-9">
+            <input type="number" id="price" min="0" (focusout)="changePrice()" class="form-control" placeholder="Price" name="price" [(ngModel)]="selectedVariant.price" required>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label" for="discount">Discount</label>
+          <div class="col-sm-9">
+            <input type="number" id="discount" min="0" class="form-control" placeholder="Discount" name="discount" [(ngModel)]="selectedVariant.discount">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label" for="quantity">Quantity <span class="text-danger">*</span></label>
+          <div class="col-sm-9">
+            <input type="number" id="quantity" min="0" (focusout)="changeQuantity()" class="form-control" placeholder="Quantity" name="quantity" [(ngModel)]="selectedVariant.quantity" required>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label" for="parent">Display Product</label>
+          <div class="parent col-sm-1">
+            <input type="checkbox" class="display" (change)="changeisActive()" [checked]="selectedVariant.isActive==1">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label" for="parent">Size <span class="text-danger">*</span></label>
+          <div class="parent col-sm-9">
+              <!-- <button class="btn btn-info outline dropdown-toggle" id="departmenutbtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{selectedSize.value}}
+              </button>
+          
+              <div class="dropdown-menu" aria-labelledby="departmenutbtn">
+                <a class="dropdown-item" *ngFor="let size of sizes" (click)="selectSize(size)">{{size.value}}</a>
+              </div> -->
+              <input list="sizes" id="size" name="sizes" class="attributes" [(ngModel)]="size" (change)="selectSize(size)" placeholder="Select Size">
+              <datalist id="sizes">
+                <option *ngFor="let size of sizes" [value]="size.value"></option>
+              </datalist>
+              <span class="text-primary add-new" (click)="addSize()">&nbsp;&nbsp; + Add New Size</span>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label" for="parent">Color <span class="text-danger">*</span></label>
+          <div class="parent col-sm-9">
+              <!-- <button class="btn btn-info outline dropdown-toggle" id="departmenutbtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {{selectedColor.value}}
+              </button>
+          
+              <div class="dropdown-menu" aria-labelledby="departmenutbtn">
+                <a class="dropdown-item" *ngFor="let color of colors" (click)="selectColor(color)">{{color.value}}</a>
+              </div> -->
+              <input list="colors" id="color" name="colors" class="attributes" [(ngModel)]="color" (change)="selectColor(color)" placeholder="Select Color">
+              <datalist id="colors">
+                <option *ngFor="let color of colors" [value]="color.value"></option>
+              </datalist>
+              <span class="text-primary add-new" (click)="addColor()">&nbsp;&nbsp; + Add New Color</span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-9">
+            
+          </div>
+          <div class="col-sm-3 add-variant">
+            <button type="submit" class="btn btn-primary savebtn" (click)="addVariant()">Save Variant</button>
+            <button class="btn btn-outline-dark" (click)="cancelVariant()">Cancel</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header h5">
+      Product Variants
+    </div>
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Variant ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Discount</th>
+            <th>Quantity</th>
+            <th>Is Display</th>
+            <th>Size</th>
+            <th>Color</th>
+            <th>Add Image</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let variant of variants">
+            <td>{{variant.variant_id}}</td>
+            <td>{{variant.name}}</td>
+            <td>{{variant.price}}</td>
+            <td>{{variant.discount}}</td>
+            <td>{{variant.quantity}}</td>
+            <td>
+              <input type="checkbox" [checked]="variant.isActive==1" class="display" disabled>
+            </td>
+            <td>{{variant.size}}</td>
+            <td>{{variant.color}}</td>
+            <td>
+              <a (click)="addImage(variant)" class="text-success nav-link"><i class="ion-md-add"></i> Image</a>
+            </td>
+            <td><button class="edit"  (click)="editVariant(variant)"><i class="ion-md-create"></i></button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

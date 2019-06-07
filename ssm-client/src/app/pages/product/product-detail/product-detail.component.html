@@ -1,0 +1,76 @@
+  <br><br><br>
+  <div>
+    <div class="container-fluid">
+      <div class="image-container">
+          <div class="img">
+              <img class="image-secondary" *ngFor="let img of images" (click)="changeImage(img)" src="http://localhost:4200/assets/Images/thumbnail/{{img}}">
+            </div>
+            <div class="main-image text-center">
+              <img id="viewImage" class="image" src="http://localhost:4200/assets/Images/view_image/{{image}}">
+          </div>
+      </div>
+          
+        
+       
+        <div class="description">
+          <div>
+            <p class="h4"><b>{{product.name}}</b></p>
+          </div>
+          <div>
+            <p class="text-secondary">
+                {{product.description}}
+            </p>
+            <hr>
+          </div>
+          <div>
+            <p class="h4"><b>&#36;{{product.price}}</b>
+              <span class="h5 text-secondary">&nbsp;&nbsp;
+                <span *ngIf="product.price!=product.discounted_price"><del>&#36;{{product.discounted_price | number : '1.2-2'}}</del></span>
+              </span>
+            </p>
+          </div>
+          <br>  
+          <div>
+            <p class="text-danger">{{sizeError}}</p>
+            <p class="h6"><b>
+                SIZE 
+            </b>
+            </p>
+          </div>
+          <div>
+            <div class="size" [class.animate]="sizeError!=''">
+              <span  *ngFor="let size of sizes">
+                <div>
+                    <button class="btn sizeButton" [class.activeButton]="selectedSize==size.size" (click)="changeSize(size.size)" *ngIf="size.quantity>0  ">{{size.size}}</button><br>
+                    <span class="inventory-left"></span>
+                </div>
+                
+                &nbsp;&nbsp;
+              </span>  
+              
+            </div>
+          </div>
+          <div>
+            <p class="text-danger">{{colorError}}</p>
+            <p class="h6"><b>
+              COLOR 
+              </b>
+            </p>
+          </div>
+          <div>
+            <div class="color"  [class.animate]="colorError!=''">
+              <span *ngFor="let color of colors">
+                  <button class="btn colorButton" [class.selectedColor]="selectedColor==color.variant_id" (mouseleave)="leaveColor(colors[0])" (mouseenter)="hoverColor(color)" (click)="changeColor(color)">
+                    <img class="color-image" src="http://localhost:4200/assets/Images/thumbnail/{{color.thumbnail[0]}}">
+                  </button>
+                  &nbsp;&nbsp;
+              </span>
+            </div>
+          </div>
+          <div>
+            <button class="cart" (click)="addToBag()"><i class="ion-md-basket"></i> &nbsp;ADD TO BAG</button>
+            <button class="wishlist btn btn-outline-dark" (click)="addToWishlist()" [disabled]="wishlist=='WISHLISTED'"><i class="ion-md-bookmark"></i> &nbsp;{{wishlist}}</button>
+          </div>    
+        </div>
+    </div>
+  </div>

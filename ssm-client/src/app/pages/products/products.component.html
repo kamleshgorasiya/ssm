@@ -1,14 +1,12 @@
-<div class="scroll sidebar" style="position: fixed">
-    <app-sidebar (categoryClick)="categoryHandler($event)"></app-sidebar>
-</div>                    
-<div class="scroll">
+                   
+<div class="container-fluid" style="width:100%;height:auto;">
     <section class="main">
         <div class="row">
  
-            <div (mouseenter)="onHover(index)" class="card-deck col-md-2 mainDiv"  *ngFor="let product of products;let index=index" [class.dummyCard]="product.product_id===0">
+            <div (mouseenter)="onHover(index)" class="col-md-2 mainDiv"  *ngFor="let product of products;let index=index" [class.dummyCard]="product.product_id===0">
                 <div class="card card-block card-hover">
                           <a class="img" (click)="imageClick(product.product_id)">
-                          <img src="../../../assets/Images/product_images/{{product.thumbnail}}" class="card-img-top" height="300px" width="100%">
+                          <img src="http://localhost:4200/assets/Images/list_image/{{product.image}}" class="card-img-top" height="300px" width="100%">
                         </a>
                     <div class="card-body hide" id="card-body">
                         
@@ -38,7 +36,7 @@
                           <span>
                               <button class="btn btn-small text-light actionButton" style="background-color: #ff3e6c;" (click)="addToBag(product.product_id)">ADD TO BAG</button>
                           
-                              <button class="btn btn-small btn-outline-dark actionButton" style="margin-top:5px;margin-bottom: 5px;margin-left:8px;" (click)="addToWishList(product.product_id)" [disabled]="wishlist[index]=='WISHLISTED'">{{wishlist[index]}}</button>  
+                              <button class="btn btn-small btn-outline-dark actionButton wishlist" (click)="addToWishList(product.product_id)" [disabled]="wishlist[index]=='WISHLISTED'">{{wishlist[index]}}</button>  
                           </span>
                         </p>
                       </div>

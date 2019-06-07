@@ -21,6 +21,7 @@
                     #uname="ngModel"
                     class="form-control input-underline input-lg h5"
                     name="uname"
+                    maxlength="20"
                     id="input-uname"
                     placeholder="User Name"
                     required
@@ -39,6 +40,7 @@
                     #email="ngModel"
                     class="form-control input-underline input-lg h5"
                     name="email"
+                    maxlength="30"
                     id="input-email"
                     pattern=".+@.+\..+"
                     placeholder="Email address"
@@ -66,6 +68,7 @@
                       placeholder="Password"
                       required
                       minlength="4"
+                      maxlength="30"
                       [attr.aria-invalid]="password.invalid && password.touched ? true : null">
                       <ng-container *ngIf="password.invalid && password.touched ">
                         <p class="text-danger" *ngIf="password.errors?.required">
@@ -91,7 +94,8 @@
                       id="input-mobile"
                       placeholder="Mobile"
                       required
-                      minlength="4"
+                      minlength="10"
+                      maxlength="10"
                       [attr.aria-invalid]="mobile.invalid && mobile.touched ? true : null">
                       <ng-container *ngIf="mobile.invalid && mobile.touched ">
                         <p class="text-danger" *ngIf="mobile.errors?.required">
@@ -103,7 +107,7 @@
                       </ng-container>
                   </div>
                   <div class="form-control-group">
-                    <button type="submit" (click)="registerUser()" class="btn btn-primary btn-block h4" [disabled]="submitted || !form.valid"><i class="ion-md-person-add"></i> &nbsp;Register</button>
+                    <button type="submit" (click)="registerUser()" class="btn btn-primary btn-block h4" [disabled]="!form.valid"><i class="ion-md-person-add"></i> &nbsp;Register</button>
                   </div>
                 </form>
                 <div class="text-center">

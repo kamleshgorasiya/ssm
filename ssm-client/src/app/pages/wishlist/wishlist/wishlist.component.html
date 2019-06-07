@@ -1,0 +1,69 @@
+<div class="scroll">
+  <div class="login" *ngIf="login==1" >
+    <div class="container-fluid"  >
+      <div class="text-center">
+        <div class="h5">
+          PLEASE LOG IN
+        </div>
+        <div class="text-secondary">
+          Login to view items in your wishlist.
+        </div>
+        <br>
+        <div class="loginButton" (click)="goToLogin()">
+          LOGIN
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="login" *ngIf="count==0">
+    <div class="container-fluid">
+      <div class="text-center">
+        <div class="wishlistEmpty-message">
+          YOUR WISHLIST IS EMPTY
+        </div>
+        <div class="wishlistEmpty-info">
+          Add items that you like to your wishlist. Review them anytime and easily move them to the bag.
+        </div>
+        <div class="wishlistEmpty-icon">
+          <img src="../../../assets/icons/wishlist.PNG">
+        </div>
+        <div>
+          <a href="" class="wishlistEmpty-button">CONTINUE SHOPPING</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="main" *ngIf="login==0 && count>0">
+      <p class="wishlist-header"><b>My Wishlist </b>({{count}} Items)</p>
+    <div class="wishlist row">
+      
+      <div class="card-deck mainDiv" *ngFor="let product of products;let index=index"  [class.dummyCard]="product.product_id===0">
+        <div class="card card-block card-hover">
+          <img src="http://localhost:4200/assets/Images/list_image/{{images[index]}}" class="card-img-top img" >
+          <div class="itemcard-remove" (click)="removeItem(product.product_id)">
+            <span class="remove"><i class="ion-md-close"></i></span>
+          </div>
+          <div class="card-body">
+            <div class="title">
+              {{product.name}}
+            </div>
+            <div class="price"> 
+              <p class="card-text text-dark h6 ">
+                <span class="product-price">
+                  &#36;{{product.price}}
+                </span>
+                <span class="card-text text-secondary h6" *ngIf="product.price!=product.price+product.discounted_price">
+                  &nbsp;<del>&#36;{{product.discounted_price+product.price | number : '1.2-2'}} </del>
+                </span>
+              </p>
+            </div>
+            <div class="text-center nav-link" (click)="addToBag(product.variant_id)">
+              MOVE TO BAG
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+</div>

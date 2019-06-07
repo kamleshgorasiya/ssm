@@ -125,3 +125,18 @@
         margin-top:200px;
     }
 }
+
+@media(max-width:1500px){
+    
+    .image{
+        width:230px;
+        height:350px;
+    }
+    .image-secondary{
+        width:30px;
+        height:30px;
+    }
+    .main{
+        margin-top:200px;
+    }
+}

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { HttpHeaders } from '@angular/common/http';
-import { AuthService } from './auth.service';
+import { HttpClient } from '@angular/common/http';  
+import { HeaderSetter } from '../data/header-setter';
 
 @Injectable({
   providedIn: 'root'
@@ -9,27 +8,18 @@ import { AuthService } from './auth.service';
 export class PaymentService {
 
 
-  constructor(private _http:HttpClient,private  _authService: AuthService) { }
+  constructor(private _http:HttpClient,private headerSetter:HeaderSetter) { }
 
-  private checkoutUrl="http://localhost:3000/payment/checkout";
-  private oredrDetailUrl="http://localhost:3000/payment/orderDetail";
+   /* Urls of all Payment related apis  */
 
-  setHeader():any{
-    let headers=new HttpHeaders({
-      'Authorization':`Bearer ${this._authService.getToken()}`
-    })
-    let options={headers:headers};
-    return options;
-  } 
+  private checkoutUrl=this.headerSetter.baseUrl+"/payment/checkout";
 
+  /* Call api for confirming payment and place the order */
+  
   paymentcheckOut(details){
-    let options=this.setHeader();
-    console.log(details)
+    let options=this.headerSetter.getHeader();
     return this._http.post<any>(this.checkoutUrl,details,options);
   }
 
-  getOrders(){
-    let options=this.setHeader();
-    return this._http.get<any>(this.oredrDetailUrl,options);
-  }
+  
 }

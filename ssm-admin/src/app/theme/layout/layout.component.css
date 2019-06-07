@@ -1,0 +1,12 @@
+.content{
+    display: -webkit-flex;
+    width:100%;
+}
+
+.router-content{
+    margin-left:235px;
+    margin-top:55px;
+    background-color: rgb(247, 249, 252);
+    width: 100%;
+    
+}

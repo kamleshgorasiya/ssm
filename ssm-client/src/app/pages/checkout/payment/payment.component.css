@@ -13,7 +13,7 @@
     font-size: 14px;
     font-weight: 600;
     padding: 10px;
-    background: #ff3f6c;
+    background: #337AB7;
     cursor: pointer;
     text-align: center;
     border: none;
@@ -25,14 +25,14 @@
 }
 @media(max-width:414px){
     .price-card{
-        width: 300px;
-        margin-left:80px;
+        width: 400px;
+        margin:auto;
     }
     .order{
-        width:250px;
+        width:360px;
     }
     .main{
-        margin-top:350px;
+        margin-top:90px;
     }
 }
 .stepper{

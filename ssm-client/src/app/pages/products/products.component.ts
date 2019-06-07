@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/core/mock/product.service';
 import { Product } from 'src/app/core/data/product';
 import { DataExchangeService } from 'src/app/core/mock/data-exchange.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { CartService } from 'src/app/core/mock/cart.service';
 import { AuthService } from 'src/app/core/mock/auth.service';
 
@@ -43,7 +43,8 @@ export class ProductsComponent implements OnInit {
               private dataExchangeServie:DataExchangeService,
               private _router:Router,
               private _cartService:CartService,
-              private _authService:AuthService) { 
+              private _authService:AuthService,
+              private _route:ActivatedRoute) { 
   }
 
   setPaging(){

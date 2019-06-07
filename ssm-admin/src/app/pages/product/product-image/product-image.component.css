@@ -1,0 +1,27 @@
+.card-header{
+    color: #337ab7;
+    background-color: aliceblue;
+}
+.card{
+    border:none;
+    margin-right:10px;
+    width:100%;
+}
+.image-card{
+    border:0.5px solid rgb(225, 238, 250);
+}
+.image-container{
+    width:30%;
+    margin-left:25px;
+}
+input{
+    margin-top:10px;
+}
+.card-body{
+    margin-left:-10px;
+    margin-top:-10px;
+}
+.image{
+    width:230px;
+    height:300px;
+}

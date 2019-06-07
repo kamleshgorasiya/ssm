@@ -1,12 +1,15 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Output } from '@angular/core';
 import { Subject } from 'rxjs';
 import { User } from '../data/user';
-import { TouchSequence } from 'selenium-webdriver';
+import { Product } from '../data/product';
+import { EventEmitter } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataExchangeService {
+
+  /* Service for data interaction among components */
 
   private messageSource=new Subject<number>();
   private userName=new Subject<User>();
@@ -14,6 +17,9 @@ export class DataExchangeService {
   private addWishlist=new Subject<string>();
   private searchItem=new Subject<string>();
   private addressItem=new Subject<string>();
+  private productData=new Subject<Product>();
+  private footerFlag=new Subject<boolean>();
+  footerRest:EventEmitter<any>=new EventEmitter();
 
   userMessage$=this.userName.asObservable();
   currentmessage$=this.messageSource.asObservable();
@@ -21,8 +27,13 @@ export class DataExchangeService {
   addWishlistMessage$=this.addWishlist.asObservable();
   searchMessage$=this.searchItem.asObservable();
   addressMessage$=this.addressItem.asObservable();
+  productMessage$=this.productData.asObservable();
+  footerMessage$=this.footerFlag.asObservable();
 
   constructor() { }
+
+  /* Functions for changing observable's data */ 
+
   changeCategory(categoryId){
     this.messageSource.next(categoryId);
   }
@@ -46,4 +57,15 @@ export class DataExchangeService {
   changeAddress(address){
     this.addressItem.next(address);
   }
+
+  changeProduct(product){
+    this.productData.next(product);
+  }
+
+  changeFooterFlag(flag){
+    this.footerFlag.next(flag);
+  }
+
+
+
 }

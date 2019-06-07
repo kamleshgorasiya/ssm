@@ -6,9 +6,11 @@ import { HeaderComponent } from './header/header.component';
 import { LayoutComponent } from './layout/layout.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { PagesModule } from '../pages/pages.module';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
-  declarations: [HeaderComponent, LayoutComponent],
+  declarations: [HeaderComponent, LayoutComponent, FooterComponent],
   imports: [
     CommonModule,
     ThemeRoutingModule,

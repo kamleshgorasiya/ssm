@@ -1,0 +1,44 @@
+<table class="table table-striped" >
+  <thead>
+    <tr>
+      <th scope="col">Order ID</th>
+      <th scope="col">Product ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Color</th>
+      <th scope="col">Size</th>
+      <th scope="col">Image</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let order of orders;let index=index">
+      <td>{{order.order_id}}</td>
+      <td>{{order.product_variant_id}}</td>
+      <td>{{order.name}}</td>
+      <td>{{order.unit_cost}}</td>
+      <td>{{order.quantity}}</td>
+      <td>{{order.attributes.Size}}</td>
+      <td>{{order.attributes.Color}}</td>
+      <td>
+        <img alt="product-image" src="../../../../assets/Images/thumbnail/{{images[index]}}" width="100px" height="100px">
+      </td>
+      <td *ngIf="order.status_id==2">  
+        <button class="btn btn-outline-primary" (click)="deliverOrder(order)">Deliver Order</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="text-center">
+  <nav aria-label="Page">
+    <ul class="pagination justify-content-center">
+      <li class="page-item" *ngIf="currentPage!=1" (click)="changePage(1)"><a class="page-link">First</a></li>
+      <li class="page-item" *ngIf="currentPage!=1" (click)="changePage(currentPage-1)"><a class="page-link"><i class="ion-md-skip-backward"></i></a></li>
+      <li class="page-item" [class.active]="pageno==currentPage" (click)="changePage(pageno)" *ngFor="let pageno of displayPages"><a class="page-link">{{pageno}}</a></li>
+      <li class="page-item" *ngIf="currentPage!=lastPage" (click)="changePage(currentPage+1)"><a class="page-link"><i class="ion-md-skip-forward"></i></a></li>
+      <li class="page-item" *ngIf="currentPage!=lastPage" (click)="changePage(lastPage)"><a class="page-link">Last</a></li>
+    </ul>
+  </nav>
+</div>

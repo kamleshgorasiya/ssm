@@ -1,17 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LayoutComponent } from '../theme/layout/layout.component';
-import { ProductsComponent } from './products/products.component';
+import { ProductsComponent } from './product/products/products.component';
 import { LoginComponent } from './authentication/login/login.component';
 import { RegisterComponent } from './authentication/register/register.component';
-import { AuthGuard } from '../auth.guard';
-import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { ProductDetailComponent } from './product/product-detail/product-detail.component';
 import { CartDetailComponent } from './cart-detail/cart-detail.component';
-import { WishlistComponent } from './wishlist/wishlist.component';
+import { WishlistComponent } from './wishlist/wishlist/wishlist.component';
 import { AddAddressComponent } from './checkout/add-address/add-address.component';
 import { PaymentComponent } from './checkout/payment/payment.component';
 import { AddressComponent } from './checkout/address/address.component';
 import { OrderDetailComponent } from './checkout/order-detail/order-detail.component';
+import { SearchProductComponent } from './product/search-product/search-product.component';
+import { CategoryProductComponent } from './product/category-product/category-product.component';
+import { HomepageComponent } from './home/homepage/homepage.component';
+import { ResetPasswordComponent } from './authentication/reset-password/reset-password.component';
 
 const routes: Routes = [
   {
@@ -20,7 +23,11 @@ const routes: Routes = [
     children:[
       {
         path:'',
-        component:ProductsComponent
+        component:HomepageComponent
+      },
+      {
+        path:'search/:search',
+        component:SearchProductComponent
       },
       {
         path:'login',
@@ -57,7 +64,20 @@ const routes: Routes = [
       {
         path:'orders',
         component:OrderDetailComponent
+      },
+      {
+        path:'category/:id/:name',
+        component:CategoryProductComponent
+      },
+      {
+        path:'products',
+        component:ProductsComponent
+      },
+      {
+        path:'reset-password',
+        component:ResetPasswordComponent
       }
+     
     ]
   }
 ];

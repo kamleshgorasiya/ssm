@@ -13,14 +13,17 @@ export class RegisterComponent implements OnInit {
   constructor(private _authService:AuthService,private dataService:DataExchangeService,private _router:Router) { }
   user:any={};
   errorText:string;
+  token;
   ngOnInit() {
   }
+
+  // Register the user. 
 
   registerUser(){
      this._authService.registerUser(this.user)
      .subscribe(
        res=>{
-         
+        this.token=res.token;
         localStorage.setItem("token",res.token);
         this._authService.getUser()
         .subscribe(
@@ -34,7 +37,7 @@ export class RegisterComponent implements OnInit {
         this._router.navigate(['']);
        },
        err=>{
-         this.errorText=err.error;
+         this.errorText=err.error.message;
        }
      )
   }

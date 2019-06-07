@@ -1,47 +1,64 @@
 <div class="main">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-2"></div>
-      <div class="col-md-6">
-          <div class="stepper text-center">
-              <div class="selectStepper">
-                BAG
-                <br>
-                <hr>
-              </div>
-              <div class="space">
-               &nbsp;&nbsp; ----------  &nbsp;&nbsp;
-              </div>
-              <div class="selectStepper">
-                ADDRESS
-              </div>
-              <div class="space">
-                  &nbsp;&nbsp; ----------  &nbsp;&nbsp;
-              </div>
-              <div>
-                PAYMENT
-                
-              </div>
-            </div>
+  <div class="container">
+      <div class="stepper text-center" *ngIf="count!=0">
+        <div class="selectStepper" >
+            BAG
+          <br>
+          <hr>
+        </div>
+        <div class="space">
+           &nbsp;&nbsp; ------  &nbsp;&nbsp;
+        </div>
+        <div class="selectStepper">
+            ADDRESS
+        </div>
+        <div class="space">
+              &nbsp;&nbsp; ------ &nbsp;&nbsp;
+        </div>
+        <div>
+            PAYMENT
+        </div>
+      </div>
+      <div class="empty text-center" *ngIf="count==0">
+        <div class="h1">
+          <i class="ion-md-basket"></i>
+        </div>
+        <div class="text-dark h5">
+          Hey, it feels so light!
+        </div>
+        <div class="text-secondary">
+          There is nothing in your bag. Let's add some items
+        </div>
+        <br>
+        <div class="wishlist-button" (click)="goToWishlist()">
+          ADD ITEMS FROM WISHLIST
+        </div>
+      </div>
+    <div class="cart-data"  *ngIf="count!=0">
+
+      <div class="row" >
+          
           <div class="heading">
               <p class="secondary">
-                  <span>My Shopping Bag ({{count}} Items)</span>
-                  <span class="right">Total: &#36;{{price.net}}</span>
+                <span>My Shopping Bag ({{count}} Items)</span>
+                <span class="right">Total: &#36;{{price.net | number : '1.2-2'}}</span>
               </p>
           </div>
-        <div class="card mb-4" *ngFor="let cart of allProduct;let index=index">
+          
+        <div class="card detail-card mb-4" *ngFor="let cart of allProduct;let index=index">
           
           <div class="card-content">
               
             <div>
-              <img  class="card-img" src="../../../assets/Images/product_images/{{cart.image}}">
+              <img  class="card-img" src="http://localhost:4200/assets/Images/list_image/{{cart.image}}">
             </div>
             <div>
               <div class="card-body">
                 <div class="header">
-                    <div>
+                    <div class="cart-content">
                       <div class="info">
-                          <span class="h5"><b>{{cart.name}}</b></span>
+                          <span class="h5"><b>{{cart.name}}</b></span><span class="mr-auto"></span>
+                          
                       </div>
                        
                         <div>
@@ -53,26 +70,29 @@
                             &nbsp;&nbsp; 
                         </div>
                         <div>
+                          <span >Price :-</span><span class=" price"><b>&#36;{{cart.price | number : '1.2-2'}}</b>&nbsp;&nbsp;<del class="text-secondary h6">&#36;{{cart.discounted_price | number : '1.2-2'}}</del></span>
+                        </div>
+                        <div>
                             <div class="min">
                                 <span>
-                                  <button class="btn minButton" (click)="decrementQuantity(index)" [disabled]="cart.quantity==1"><i class="ion-md-remove"></i></button>
+                                  <button class="btn minButton" (click)="updateQuantity(index,-1)" [disabled]="cart.quantity==1"><i class="ion-md-remove"></i></button>
                                   &nbsp;&nbsp;
                                   <button class="quantity" disabled>{{cart.quantity}}</button> 
                                   &nbsp;&nbsp;
-                                  <button class="btn minButton" (click)="incrementQuantity(index)"><i class="ion-md-add"></i></button>
+                                  <button class="btn minButton" (click)="updateQuantity(index,1)"><i class="ion-md-add"></i></button>
                                 </span>  
                               </div>
                         </div>
                     </div>
-                      <div class="price">
-                        <p class="h5"><b>&#36;{{cart.price}}</b>&nbsp;&nbsp;<del class="text-secondary h6">&#36;{{cart.discounted_price}}</del></p>
-                      </div>
+                      <!-- <div class="price">
+                        <p class="h5"><b>&#36;{{cart.price | number : '1.2-2'}}</b>&nbsp;&nbsp;<del class="text-secondary h6">&#36;{{cart.discounted_price | number : '1.2-2'}}</del></p>
+                      </div> -->
                 </div>
                 
                 
                 
                 <hr class="line">
-                  <a class="remove-link text-danger" (click)="removeCart(cart.item_id)">REMOVE</a>
+                  <a class="remove-link text-danger" (click)="removeCart(cart)">REMOVE</a>
                   <a class="wishlist-link text-primary" (click)="moveToWishList(cart.item_id)">MOVE TO WISHLIST</a>
               </div>        
             </div>    
@@ -80,7 +100,7 @@
           
         </div>
       </div>
-      <div class="col-md-2">
+      <div >
         <div>
           <div class="card price-card">
             <div class="card-header">
@@ -90,13 +110,13 @@
               <div>
                 <p>
                   <span>Total MRP</span>
-                  <span class="right">&#36;{{price.total}}</span>
+                  <span class="right">&#36;{{price.total | number : '1.2-2'}}</span>
                 </p>
               </div>
               <div>
                 <p>
                   <span>Bag Discount</span>
-                  <span class="right">-&#36;{{price.discount}}</span>
+                  <span class="right">-&#36;{{price.discount | number : '1.2-2'}}</span>
                 </p>
               </div>
               <div>
@@ -106,7 +126,7 @@
                 <p>
                   <b>
                     <span>TOTAL</span>
-                    <span class="right">&#36;{{price.net}}</span>
+                    <span class="right">&#36;{{price.net | number : '1.2-2'}}</span>
                   </b>
                 </p>
               </div>
@@ -118,7 +138,44 @@
           </div>
         </div>
       </div>
-      <div class="col-md-2"></div>
+     
     </div>
+    <div  *ngIf="count!=0">
+      <div class="card second-price-card">
+        <div class="card-header">
+          <p class="h6">PRICE DETAIL</p>
+        </div>
+        <div class="card-body">
+          <div>
+            <p>
+              <span>Total MRP</span>
+              <span class="right">&#36;{{price.total | number : '1.2-2'}}</span>
+            </p>
+          </div>
+          <div>
+            <p>
+              <span>Bag Discount</span>
+              <span class="right">-&#36;{{price.discount | number : '1.2-2'}}</span>
+            </p>
+          </div>
+          <div>
+            <hr>
+          </div>
+          <div>
+            <p>
+              <b>
+                <span>TOTAL</span>
+                <span class="right">&#36;{{price.net | number : '1.2-2'}}</span>
+              </b>
+            </p>
+          </div>
+          <div>
+            <button class="order" (click)="placeOrder()">Place Order</button>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
   </div>
 </div>

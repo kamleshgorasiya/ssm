@@ -1,56 +1,44 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { AuthService } from './auth.service';
+import { HttpClient,HttpClientModule } from '@angular/common/http';
+import { HeaderSetter } from '../data/header-setter';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AddressService {
 
-  private shippingRegionUrl="http://localhost:3000/api/shippingRegion";
-  private shippingOptionUrl="http://localhost:3000/api/shippingOptions";
-  private addAddressUrl="http://localhost:3000/api/addAddress";
-  private getAddressUrl="http://localhost:3000/api/getAddress";
+  /* Urls for all Address related Apis */
 
-  constructor(private _http:HttpClient,private _authService:AuthService) { }
+  private shippingRegionUrl=this.headerSetter.baseUrl+"/api/shippingRegion";
+  private shippingOptionUrl=this.headerSetter.baseUrl+"/api/shippingOptions";
+  private addAddressUrl=this.headerSetter.baseUrl+"/api/addAddress";
+  private getAddressUrl=this.headerSetter.baseUrl+"/api/getAddress";
 
-  setHeader():any{
-    let headers=new HttpHeaders({
-      'Authorization':`Bearer ${this._authService.getToken()}`
-    })
-    let options={headers:headers};
-    return options;
-  }
+  constructor(private _http:HttpClient,private headerSetter:HeaderSetter) { }
+
+  /* call get shipping regions api */
 
   getShippingRegion(){
     return this._http.get<any>(this.shippingRegionUrl);
   }
 
+  /* call get shipping options api */
+
   getShippingOptions(){
     return this._http.get<any>(this.shippingOptionUrl);
   }
+
+  /* call api for adding address of user */
+
   addAddress(address){
-    let headers=new HttpHeaders({
-      'Authorization':`Bearer ${this._authService.getToken()}`
-    })
-    let options={headers:headers};
+    let options=this.headerSetter.getHeader();
     return this._http.post<any>(this.addAddressUrl,address,options);
   }
+
+  /* call get address api */
+  
   getAddress(){
-    let headers=new HttpHeaders({
-      'Authorization':`Bearer ${this._authService.getToken()}`
-    })
-    let options={headers:headers};
-    console.log("sade")
+    let options=this.headerSetter.getHeader();
     return this._http.get<any>(this.getAddressUrl,options)
-  }
-
-
-  private checkoutUrl="http://localhost:3000/payment/checkout";
-
-  paymentcheckOut(details){
-    //let options=this.setHeader();
-    console.log(details)
-   // return this._http.post<any>(this.checkoutUrl,details,options);
   }
 }
